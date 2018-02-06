@@ -29,6 +29,7 @@ module.exports = {
         }
     },
 
+<<<<<<< HEAD
     tooShort:
     {
         input: {
@@ -218,11 +219,18 @@ module.exports = {
 
     badData: {
         //the 'key' for the fields should match the key of the selectors in css_selectors
+=======
+    badData: { //the 'key' for the fields should match the key of the selectors in css_selectors 
+>>>>>>> 9845d65dc1da66fe91916d361d0d47c738d84093
         input: {
             hdr: '123456789',
             mke: 'MKE',
             oai: 'CHI1234SI',
+<<<<<<< HEAD
             nam: 'Harry Dresd',
+=======
+            nam: 'Harry Dresden',
+>>>>>>> 9845d65dc1da66fe91916d361d0d47c738d84093
             sex: 'M',
             rac: 'W',
             hgt: '607',
@@ -234,17 +242,27 @@ module.exports = {
             ols: '',
             oly: '',
             lic: '',
+<<<<<<< HEAD
             lis: '',
+=======
+            lis: 'UT',
+>>>>>>> 9845d65dc1da66fe91916d361d0d47c738d84093
             liy: ''
         },
         output: {
             header: 'Errors Received:',
             errorList: {
+<<<<<<< HEAD
                 oln: `If Operator's License Number, DL State, or DL Expiration Year are present, all three must be present.`
+=======
+                oln: "If Operator's License Number, DL State, or DL Expiration Year are present, all three must be present.",
+                lis: "If License Plate, License State, or License Year are present, all three must be present."
+>>>>>>> 9845d65dc1da66fe91916d361d0d47c738d84093
             },
             queryTitle: 'No results generated due to error.',
             assembledQuery: ''
         }
+<<<<<<< HEAD
     },
 
     cleared: {
@@ -271,4 +289,8 @@ module.exports = {
 
 
     }
+=======
+    }
+
+>>>>>>> 9845d65dc1da66fe91916d361d0d47c738d84093
 }
