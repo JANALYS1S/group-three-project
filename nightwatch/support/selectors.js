@@ -36,7 +36,7 @@ module.exports = {
 
     messages: {
         header: 'h4[id="validHeader"]',
-        errorList: 'ul[id="errorList"]',
+        errorList: 'li[class="errorMessage"]',
         queryTitle: 'span[name="queryTitle"]',
         assembledQuery: 'span[name="queryBody"]'
     }
