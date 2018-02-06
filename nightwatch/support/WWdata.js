@@ -29,6 +29,56 @@ module.exports = {
         }
     },
 
+    tooShort:
+    {
+        input: {
+            hdr: '1',
+            mke: 'a',
+            oai: 'abc',
+            nam: 'A',
+            sex: 'F',
+            rac: 'A',
+            hgt: '1',
+            wgt: '1',
+            hai: 'ab',
+            off: '1',
+            dow: '01012000',
+            oln: '123',
+            ols: 'al',
+            oly: '01012000',
+            lic: '789',
+            lis: 'k',
+            liy: '01012000'
+        },
+
+        output: {
+            header: "Errors Received:",
+            queryTitle: 'No results generated due to error.',
+            errorList: {
+                war: 'The "Warrant ID" field should be 10 characters long.',
+                hdr: 'The "Header" field should be between 9 and 19 characters long.',
+                mke: 'The "MKE" field should be between 2 and 4 characters long.',
+                oai: 'The "MKE" field should be between 2 and 4 characters long.',
+                nam: 'The "Name" field should be between 1 and 30 characters long.',
+                sex: 'The "Sex" field should be 1 character long.',
+                rac: 'The "Race" field should be 1 character long.',
+                hgt: 'The "Height" field should be 3 characters long.',
+                wgt: 'The "Weight" field should be between 1 and 3 characters long.',
+                hai: 'The "Weight" field should be between 1 and 3 characters long.',
+                off: 'The "Offense" field should be between 5 and 15 characters long.',
+                dow: 'The "Date of Warrant/Violation" field should be 8 characters long.',
+                oln: 'The "Drivers\' License" field should be between 1 and 20 characters long.',
+                ols: 'The "DL State" field should be 2 characters long.',
+                oly: 'The "DL Expiration Date" field should be 8 characters long.',
+                lic: 'The "License Plate" field should be between 5 and 8 characters long.',
+                lis: 'The "License State" field should be 2 characters long.',
+                liy: 'The "License Year" field should be 4 characters long.'
+            },
+            assembledQuery: '',
+
+        }
+    },
+
     tooLong:
         {
             input: {
@@ -53,7 +103,9 @@ module.exports = {
 
             output: {
                 header: "Errors Received:",
+                queryTitle: 'No results generated due to error.',
                 errorList: {
+                    war: 'The "Warrant ID" field should be 10 characters long.',
                     hdr: 'The "Header" field should be between 9 and 19 characters long.',
                     mke: 'The "MKE" field should be between 2 and 4 characters long.',
                     oai: 'The "MKE" field should be between 2 and 4 characters long.',
@@ -120,54 +172,7 @@ module.exports = {
 
         },
 
-    tooShort:
-        {
-            input: {
-                hdr: '1',
-                mke: 'a',
-                oai: 'abc',
-                nam: 'A',
-                sex: 'F',
-                rac: 'A',
-                hgt: '1',
-                wgt: '1',
-                hai: 'ab',
-                off: 'high',
-                dow: '123',
-                oln: '123',
-                ols: 'al',
-                oly: '456',
-                lic: '789',
-                lis: 'k',
-                liy: '12'
-            },
 
-            output: {
-                header: "Errors Received:",
-                queryTitle: 'No results generated due to error.',
-                errorList: {
-                    hdr: 'The "Header" field should be between 9 and 19 characters long.',
-                    mke: 'The "MKE" field should be between 2 and 4 characters long.',
-                    oai: 'The "MKE" field should be between 2 and 4 characters long.',
-                    nam: 'The "Name" field should be between 1 and 30 characters long.',
-                    sex: 'The "Sex" field should be 1 character long.',
-                    rac: 'The "Race" field should be 1 character long.',
-                    hgt: 'The "Height" field should be 3 characters long.',
-                    wgt: 'The "Weight" field should be between 1 and 3 characters long.',
-                    hai: 'The "Weight" field should be between 1 and 3 characters long.',
-                    off: 'The "Offense" field should be between 5 and 15 characters long.',
-                    dow: 'The "Date of Warrant/Violation" field should be 8 characters long.',
-                    oln: 'The "Drivers\' License" field should be between 1 and 20 characters long.',
-                    ols: 'The "DL State" field should be 2 characters long.',
-                    oly: 'The "DL Expiration Date" field should be 8 characters long.',
-                    lic: 'The "License Plate" field should be between 5 and 8 characters long.',
-                    lis: 'The "License State" field should be 2 characters long.',
-                    liy: 'The "License Year" field should be 4 characters long.'
-                },
-                assembledQuery: '',
-
-            }
-        },
 
     invalidData:
         {

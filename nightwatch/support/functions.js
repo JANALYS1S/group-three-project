@@ -40,7 +40,7 @@ module.exports = {
     enterLists: (errorList, outputs, browser) => {
         let keys = Object.getOwnPropertyNames(outputs)
         keys.forEach(key => {
-            browser.expect.element(errorList).text.to.contain(outputs[key])
+            browser.verify.containsText(errorList, outputs[key])
         })
     }
 }
