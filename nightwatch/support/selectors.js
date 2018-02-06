@@ -29,6 +29,7 @@ module.exports = {
     buttons: {
         submit: 'button[id="saveBtn"]',
         popOut: 'button[style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; margin: 0px; padding: 0px; border: none; opacity: 0; font-size: 8px; cursor: pointer;"]',
+        menuButton: 'div[class="bm-burger-button"]',
         enterW: 'p[name="enterOption"]',
         modifyW: 'p[name="modifyOption"]',
         cancelW: 'p[name="cancelOption"]',
