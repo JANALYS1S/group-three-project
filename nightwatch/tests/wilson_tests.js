@@ -126,12 +126,10 @@ module.exports = {
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['mke'])
         
         /* These checks are not working
-                browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['hai'])
-
+        browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['hai'])
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['oai'])
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['nam'])
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['ols'])
-
         */
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['hgt'])
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['lis'])
