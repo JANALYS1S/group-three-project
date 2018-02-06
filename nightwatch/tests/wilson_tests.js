@@ -1,5 +1,5 @@
-const selectors = require('../support/selectors')
-const functions = require('../support/functions')
+const selectors = require('../support/WWselectors')
+const functions = require('../support/WWfunctions')
 const data = require('../support/WWdata')
 
 module.exports = {
