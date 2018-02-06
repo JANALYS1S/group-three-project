@@ -1,6 +1,6 @@
 const selectors = require('../support/selectors')
 const functions = require('../support/functions')
-const data = require('../support/data')
+const data = require('../support/WWdata')
 
 module.exports = {
     beforeEach: browser => {
@@ -14,11 +14,11 @@ module.exports = {
 
     'Valid Data Test': browser => {
 
-        //waits for the menu button to appear, and then clicks on it
+        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.waitForElementVisible(selectors.buttons.menuButton, 10000)
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'
+        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
         browser.waitForElementVisible(selectors.buttons.enterWanted, 10000)
         browser.click(selectors.buttons.enterWanted)
 
@@ -60,7 +60,40 @@ module.exports = {
         browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.badData.output.assembledQuery)
     },
 
+    */
+
     'If I put in data that is shorter than the minimum requirements, I get an error for each field effected.': browser => {
+
+        browser.waitForElementVisible(selectors.buttons.menuButton, 10000)
+        browser.click(selectors.buttons.menuButton)
+
+        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.enterWanted, 10000)
+        browser.click(selectors.buttons.enterWanted)
+
+        //enters input fields
+        functions.enterFields(selectors.fields, data.tooShort.input, browser)
+        browser
+
+        //enters dropdown fields
+        browser.click('select[name = "sexInput"] option[value="F"]')
+        browser.click('select[name = "racInput"] option[value="A"]')
+
+        //enters calendar fields
+        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
+ 
+        //clicks submit
+        browser.click(selectors.buttons.submit)
+
+        //now I'll check that all the expected results are correct
+        browser.expect.element(selectors.messages.header).text.to.equal(data.badData2.output.header)
+
+        //checks that each error message that is listed in the data has been printed
+        functions.enterLists(selectors.messages.errorList, data.badData2.output.errorList, browser)
+        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.badData2.output.queryTitle)
+        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.badData2.output.assembledQuery)
+
+        
         functions.enterFields(selectors.fields, data.badData2.input, browser)
         browser
             //I've set all the fields, time to submit
@@ -88,4 +121,3 @@ module.exports = {
         browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.badData3.output.assembledQuery)
     },
 }
-*/
