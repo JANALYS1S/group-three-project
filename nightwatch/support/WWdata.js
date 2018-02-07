@@ -2,6 +2,7 @@ module.exports = {
 
     goodData: {
         input: {
+            war: '1234567890',
             hdr: '123456789',
             mke: 'MKE',
             oai: 'CHI1234SI',
@@ -25,30 +26,31 @@ module.exports = {
             header: 'Valid',
             errorList: {},
             queryTitle: 'Assembled Query:',
-            assembledQuery: '123456789.MKE.CHI1234SI.Harry Dresdens.F.A.607.200.Brown.Arson.2016-05-02.1234567890.IL.2016-05-02.abc12.IL.2016-05-02'
+            assembledQuery: '123456789.MKE.CHI1234SI.Harry Dresdens.F.A.607.200.Brown.Arson.2016-05-02.1234567890.IL.2016-05-02.abc123.IL.2016-05-02'
         }
     },
 
     tooShort:
         {
             input: {
-                hdr: '1',
+                war: '123456789',
+                hdr: '12345678',
                 mke: 'a',
-                oai: 'abc',
-                nam: 'A',
+                oai: 'abcdefgh',
+                nam: 'Al',
                 sex: 'F',
                 rac: 'W',
-                hgt: '1',
-                wgt: '1',
-                hai: 'ab',
-                off: 'a',
-                dow: '01012000',
-                oln: '123',
-                ols: 'al',
-                oly: '01012000',
-                lic: '789',
-                lis: 'k',
-                liy: '01012000'
+                hgt: '12',
+                wgt: '12',
+                hai: 'no',
+                off: 'high',
+                dow: '0101200',
+                oln: '1',
+                ols: 'A',
+                oly: '0101200',
+                lic: '1',
+                lis: 'A',
+                liy: '0101200'
             },
 
             output: {
@@ -68,7 +70,7 @@ module.exports = {
                     off: 'The "Offense" field should be between 5 and 15 characters long.',
                     dow: 'The "Date of Warrant/Violation" field should be 8 characters long.',
                     oln: 'The "Drivers\' License" field should be between 1 and 20 characters long.',
-                    ols: 'The "DL State" field can only include a valid State/Territory abbreviation.',
+                    ols: 'The "DL State" field should be 2 characters long.',
                     oly: 'The "DL Expiration Date" field should be 8 characters long.',
                     lic: 'The "License Plate" field should be between 5 and 8 characters long.',
                     lis: 'The "License State" field should be 2 characters long.',
@@ -82,23 +84,22 @@ module.exports = {
     tooLong:
         {
             input: {
-                hdr: 'supercalifragilisticexpialidocious',
-                mke: 'supercalifragilisticexpialidocious',
-                oai: 'supercalifragilisticexpialidocious123',
-                nam: 'supercalifragilisticexpialidocious',
-                sex: 'Transgender',
-                rac: 'Asian',
-                hgt: '99999999',
-                wgt: '99999999',
-                hai: 'supercalifragilisticexpialidocious',
-                off: 'supercalifragilisticexpialidocious',
-                dow: '9999999999',
-                oln: 'supercalifragilisticexpialidocious',
-                ols: 'Kansas',
-                oly: '999999999',
-                lic: '9999999999',
-                lis: 'Kansas',
-                liy: '999999999'
+                war: '12345678901',
+                hdr: 'supercalifragilistic',
+                mke: 'speed',
+                oai: 'applebeesz',
+                nam: 'supercalifragilisticexpialidoci',
+                hgt: '9999',
+                wgt: '9999',
+                hai: 'aquamarinee',
+                off: 'superhyperspeeed',
+                dow: '010120001',
+                oln: '123456789012345678901',
+                ols: 'KAN',
+                oly: '010120001',
+                lic: '123456789',
+                lis: 'KAN',
+                liy: '010120001'
             },
 
             output: {
@@ -130,6 +131,7 @@ module.exports = {
     invalidPeriods:
         {
             input: {
+                war: '..........',
                 hdr: '.........',
                 mke: '..',
                 oai: '.........',
@@ -140,20 +142,20 @@ module.exports = {
                 wgt: '...',
                 hai: '...',
                 off: '.....',
-                dow: '01012000',
+                dow: '........',
                 oln: '..........',
                 ols: '..',
-                oly: '01012000',
+                oly: '........',
                 lic: '.....',
                 lis: '..',
-                liy: '01012000'
+                liy: '........'
             },
 
             output: {
                 header: "Errors Received:",
                 queryTitle: 'No results generated due to error.',
                 errorList: {
-                    war: 'The "Warrant ID" field should be 10 characters long.',
+                    war: 'The "Warrant ID" field can only include numeric characters.',
                     hdr: 'The "Header" field should be between 9 and 19 characters long.',
                     mke: 'The "MKE" field should be between 2 and 4 characters long.',
                     oai: 'The "Originating Agency Identifier" field can only include characters from the English Alphabet or numeric characters.',
@@ -179,6 +181,7 @@ module.exports = {
     alphabeticalCharacters:
         {
             input: {
+                war: 'abcdefghik',
                 hdr: 'abcdefghi',
                 mke: 'ab',
                 oai: 'abcdefghi',
@@ -213,6 +216,7 @@ module.exports = {
     specialCharacters:
         {
             input: {
+                war: '!@#$%^&*()',
                 hdr: '!@#$%^&*(',
                 mke: '!!',
                 oai: ')-_=+[]{}',
@@ -250,6 +254,7 @@ module.exports = {
     numericalCharacters:
         {
             input: {
+                war: '1234567890',
                 hdr: '123456789',
                 mke: '00',
                 oai: '123456789',
@@ -283,7 +288,8 @@ module.exports = {
     blanks:
         {
             input: {
-                hdr: ' ',
+                war: '',
+                hdr: '',
                 mke: '',
                 oai: '',
                 nam: '',

@@ -1,6 +1,7 @@
 module.exports = {
     
     fields: {
+        war: 'input[class ="inputField"]',
         hdr: 'input[name="hdrInput"]',
         mke: 'input[name="mkeInput"]',
         oai: 'input[name="oriInput"]',
