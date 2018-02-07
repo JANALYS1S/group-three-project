@@ -33,7 +33,16 @@ module.exports = {
     tooShort:
         {
             input: {
+                //warrantID
                 war: '123456789',
+
+                //reason for cancellation
+                rfc: '123456789',
+
+                //date of cancellation
+                dat: '0101200',
+
+                //Enter Wanted/Modify Wanted fields in the order they appear
                 hdr: '12345678',
                 mke: 'a',
                 oai: 'abcdefgh',
@@ -58,12 +67,12 @@ module.exports = {
                 queryTitle: 'No results generated due to error.',
                 errorList: {
                     war: 'The "Warrant ID" field should be 10 characters long.',
+                    rfc: 'The "Reason for Cancellation" field should be between 10 and 150 characters long.',
+                    doc: 'The "Date of Cancellation" field can include dates after 1900.',
                     hdr: 'The "Header" field should be between 9 and 19 characters long.',
                     mke: 'The "MKE" field should be between 2 and 4 characters long.',
                     oai: 'The "Originating Agency Identifier" field should be 9 characters long.',
                     nam: 'The "Name" field should be between 3 and 30 characters long.',
-                    sex: 'The "Sex" field should be 1 character long.',
-                    rac: 'The "Race" field should be 1 character long.',
                     hgt: 'The "Height" field should be 3 characters long.',
                     wgt: 'The "Weight" field should be between 1 and 3 characters long.',
                     hai: 'The "Hair" field should be between 3 and 10 characters long.',
@@ -86,6 +95,7 @@ module.exports = {
             input: {
                 war: '12345678901',
                 hdr: 'supercalifragilistic',
+                rfc: '1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901',
                 mke: 'speed',
                 oai: 'applebeesz',
                 nam: 'supercalifragilisticexpialidoci',
@@ -107,20 +117,23 @@ module.exports = {
                 queryTitle: 'No results generated due to error.',
                 errorList: {
                     war: 'The "Warrant ID" field should be 10 characters long.',
+                    rfc: 'The "Reason for Cancellation" field should be between 10 and 150 characters long.',
+                    doc: 'The "Date of Cancellation" field can include dates after 1900.',
                     hdr: 'The "Header" field should be between 9 and 19 characters long.',
                     mke: 'The "MKE" field should be between 2 and 4 characters long.',
                     oai: 'The "Originating Agency Identifier" field should be 9 characters long.',
                     nam: 'The "Name" field should be between 3 and 30 characters long.',
-                    sex: 'The "Sex" field should be 1 character long.',
-                    rac: 'The "Race" field should be 1 character long.',
                     hgt: 'The "Height" field should be 3 characters long.',
                     wgt: 'The "Weight" field should be between 1 and 3 characters long.',
                     hai: 'The "Hair" field should be between 3 and 10 characters long.',
                     off: 'The "Offense" field should be between 5 and 15 characters long.',
-                    oln: 'The "Drivers\' License" field should be between 1 and 20 characters long.',
+                    dow: 'The "Date of Warrant/Violation" field should be 8 characters long.',
+                    oln: 'The "Drivers License" field should be between 1 and 20 characters long.',
                     ols: 'The "DL State" field should be 2 characters long.',
+                    oly: 'The "DL Expiration Date" field should be 8 characters long.',
                     lic: 'The "License Plate" field should be between 5 and 8 characters long.',
                     lis: 'The "License State" field should be 2 characters long.',
+                    liy: 'The "License Year" field should be 4 characters long.'
                 },
                 queryTitle: 'No results generated due to error.',
                 assembledQuery: ''
@@ -132,6 +145,7 @@ module.exports = {
         {
             input: {
                 war: '..........',
+                rfc: '..........',
                 hdr: '.........',
                 mke: '..',
                 oai: '.........',
@@ -156,6 +170,8 @@ module.exports = {
                 queryTitle: 'No results generated due to error.',
                 errorList: {
                     war: 'The "Warrant ID" field can only include numeric characters.',
+                    rfc: 'The "Reason for Cancellation" field should be between 10 and 150 characters long.',
+                    doc: 'The "Date of Cancellation" field can include dates after 1900.',
                     hdr: 'The "Header" field should be between 9 and 19 characters long.',
                     mke: 'The "MKE" field should be between 2 and 4 characters long.',
                     oai: 'The "Originating Agency Identifier" field can only include characters from the English Alphabet or numeric characters.',
@@ -182,6 +198,7 @@ module.exports = {
         {
             input: {
                 war: 'abcdefghik',
+                rfc: 'abcdefghik',
                 hdr: 'abcdefghi',
                 mke: 'ab',
                 oai: 'abcdefghi',
@@ -217,6 +234,7 @@ module.exports = {
         {
             input: {
                 war: '!@#$%^&*()',
+                rfc: '!@#$%^&*()',
                 hdr: '!@#$%^&*(',
                 mke: '!!',
                 oai: ')-_=+[]{}',
@@ -243,7 +261,7 @@ module.exports = {
                     hgt: 'The "Height" field can only include numeric characters.',
                     wgt: 'The "Weight" field can only include numeric characters.',
                     hai: 'The "Hair" field should be between 1 and 3 characters long.',
-                    oln: 'The "Drivers\' License" field should be between 1 and 20 characters long.',
+                    oln: 'The "Drivers License" field should be between 1 and 20 characters long.',
                     ols: 'The "DL State" field can only include a valid State/Territory abbreviation.',
                     lis: 'The "License State" field can only include a valid State/Territory abbreviation.'
                 },
@@ -255,6 +273,7 @@ module.exports = {
         {
             input: {
                 war: '1234567890',
+                rfc: '1234567890',
                 hdr: '123456789',
                 mke: '00',
                 oai: '123456789',
