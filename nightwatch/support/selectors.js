@@ -12,13 +12,13 @@ module.exports = {
         oln: 'input[name="olnInput"]',
         ols: 'input[name="olsInput"]',
         lic: 'input[name="licInput"]',
-        lis: 'input[name="lisInput"]'
+        lis: 'input[name="lisInput"]',
     },
 
     calendars: {
         dow: 'input[name="dowInput"]',
-        oly: 'input[name="olyInput"]',
-        liy: 'input[name="liyInput"]'
+        oly: 'input[name="oldInput"]',
+        liy: 'input[name="lidInput"]'
     },
 
     dropdowns: {
@@ -28,7 +28,7 @@ module.exports = {
 
     buttons: {
         submit: 'button[id="saveBtn"]',
-        popOut: 'button[style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; margin: 0px; padding: 0px; border: none; opacity: 0; font-size: 8px; cursor: pointer;"]',
+        popOut: 'div[class="bm-burger-button"]',
         enterW: 'p[name="enterOption"]',
         modifyW: 'p[name="modifyOption"]',
         cancelW: 'p[name="cancelOption"]',
@@ -38,6 +38,8 @@ module.exports = {
         header: 'h4[id="validHeader"]',
         errorList: 'ul[id="errorList"]',
         queryTitle: 'span[name="queryTitle"]',
-        assembledQuery: 'span[name="queryBody"]'
+        assembledQuery: 'span[name="queryBody"]',
+        expectedError: 'ul[name="errorList"]',
+        breakingYearError: 'ul[id="errorList"]',
     }
 }
