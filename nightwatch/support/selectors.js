@@ -12,7 +12,7 @@ module.exports = {
         oln: 'input[name="olnInput"]',
         ols: 'input[name="olsInput"]',
         lic: 'input[name="licInput"]',
-        lis: 'input[name="lisInput"]'
+        lis: 'input[name="lisInput"]',
     },
 
     calendars: {
@@ -55,6 +55,8 @@ module.exports = {
         header: 'h4[id="validHeader"]',
         errorList: 'ul[id="errorList"]',
         queryTitle: 'span[name="queryTitle"]',
-        assembledQuery: 'span[name="queryBody"]'
+        assembledQuery: 'span[name="queryBody"]',
+        expectedError: 'ul[name="errorList"]',
+        breakingYearError: 'ul[id="errorList"]',
     }
 }
