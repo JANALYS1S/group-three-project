@@ -3,6 +3,7 @@ const functions = require('../support/functions')
 const data = require('../support/data')
 
 module.exports = {
+	/*
     beforeEach: browser => {
         browser.url('http://localhost:3000')
     },
@@ -65,5 +66,6 @@ module.exports = {
         browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.badData3.output.queryTitle)
         browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.badData3.output.assembledQuery)
     }
+	*/
 
 }
