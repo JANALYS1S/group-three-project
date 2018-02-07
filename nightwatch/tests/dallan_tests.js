@@ -13,25 +13,25 @@ module.exports = {
 
     'Good Data For Date Fields':  browser => {
         browser
-        .waitForElementVisible(selectors.buttons.popOut, 10000)
-        .click(selectors.buttons.popOut)
+        .waitForElementVisible(selectors.buttons.menuButton, 10000)
+        .click(selectors.buttons.menuButton)
         .waitForElementVisible(selectors.buttons.enterW, 3000)
         .click(selectors.buttons.enterW)
         .setValue(selectors.fields.hdr, data.goodData.input2.hdr)
         .click(selectors.calendars.dow)
         .setValue(selectors.calendars.dow, data.goodData.input2.dow)
         .pause(2000)
-        .setValue(selectors.calendars.liy, data.goodData.input2.liy)
+        .setValue(selectors.calendars.lid, data.goodData.input2.lid)
         .pause(2000)
-        .click(selectors.calendars.oly)
-        .setValue(selectors.calendars.oly, data.goodData.input2.oly)
+        .click(selectors.calendars.old)
+        .setValue(selectors.calendars.old, data.goodData.input2.old)
         .click(selectors.buttons.submit)
         .expect.element(selectors.messages.errorList).to.be.visible
     },
 'Breaking Year Fields': browser => {
     browser
-    .waitForElementVisible(selectors.buttons.popOut, 10000)
-    .click(selectors.buttons.popOut)
+    .waitForElementVisible(selectors.buttons.menuButton, 10000)
+    .click(selectors.buttons.menuButton)
     .waitForElementVisible(selectors.buttons.enterW, 3000)
     .click(selectors.buttons.enterW)
     .waitForElementVisible(selectors.fields.hdr, 3000)
@@ -39,11 +39,11 @@ module.exports = {
     .setValue(selectors.fields.hai, data.goodData.input2)
     .click(selectors.calendars.dow)
     .setValue(selectors.calendars.dow, data.breakingYear.dOW)
-    .waitForElementVisible(selectors.calendars.liy, 3000)
-    .click(selectors.calendars.liy)
-    .setValue(selectors.calendars.liy, data.breakingYear.dlED)
-    .click(selectors.calendars.oly)
-    .setValue(selectors.calendars.oly, data.breakingYear.lED)
+    .waitForElementVisible(selectors.calendars.lid, 3000)
+    .click(selectors.calendars.lid)
+    .setValue(selectors.calendars.lid, data.breakingYear.dlED)
+    .click(selectors.calendars.old)
+    .setValue(selectors.calendars.old, data.breakingYear.lED)
     .click(selectors.buttons.submit)
     .expect.element(selectors.messages.breakingYearError).to.be.visible
 }

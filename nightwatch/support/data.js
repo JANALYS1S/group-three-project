@@ -1,5 +1,5 @@
 module.exports = {
-
+    
     goodData: {
         input: {
             hdr: '123456789',
@@ -25,7 +25,7 @@ module.exports = {
             header: 'Valid',
             errorList: {},
             queryTitle: 'Assembled Query:',
-            assembledQuery: '123456789.MKE.CHI1234SI.Harry Dresdens.F.A.607.200.Brown.Arson.2016-05-02......'
+            assembledQuery: '123456789.MKE.CHI1234SI.Harry Dresdens.M.W.607.200.Brown.Arson.05022016......'
         }
     },
 
@@ -59,5 +59,5 @@ module.exports = {
             assembledQuery: ''
         }
     }
-
+    
 }

@@ -17,21 +17,38 @@ module.exports = {
 
     calendars: {
         dow: 'input[name="dowInput"]',
-        oly: 'input[name="oldInput"]',
-        liy: 'input[name="lidInput"]'
+        old: 'input[name="oldInput"]',
+        lid: 'input[name="lidInput"]'
     },
 
     dropdowns: {
         sex: 'select[name = "sexInput"]',
-        rac: 'select[name = "racInput"]'
+        rac: 'select[name = "racInput"]',
+
+        //these selectors will let you select an option from the sex dropdown menu:
+        sexFemale: 'select[name = "sexInput"] option[value="F"]',
+        sexMale: 'select[name = "sexInput"] option[value="M"]',
+        sexOther: 'select[name = "sexInput"] option[value="O"]',
+        sexUnknown: 'select[name = "sexInput"] option[value="U"]',
+
+        //these selectors will let you select the corresponding option from the race dropdown menu:
+        raceAsian: 'select[name = "racInput"] option[value="A"]',
+        raceBlack:'select[name = "racInput"] option[value="B"]',
+        raceHispanic:'select[name = "racInput"] option[value="H"]',
+        raceIndian:'select[name = "racInput"] option[value="I"]',
+        raceWhite:'select[name = "racInput"] option[value="W"]',
+        raceUnknown: 'select[name = "racInput"] option[value="U"]'
     },
 
     buttons: {
         submit: 'button[id="saveBtn"]',
-        popOut: 'div[class="bm-burger-button"]',
+        clear: 'button[id="clearBtn"]',
+        menuButton: 'div[class="bm-burger-button"]',
+        home: 'p[name="homeOption"]',
         enterW: 'p[name="enterOption"]',
         modifyW: 'p[name="modifyOption"]',
         cancelW: 'p[name="cancelOption"]',
+        popOut: 'button[style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; margin: 0px; padding: 0px; border: none; opacity: 0; font-size: 8px; cursor: pointer;"]',
     },
 
     messages: {
