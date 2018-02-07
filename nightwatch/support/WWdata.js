@@ -30,54 +30,54 @@ module.exports = {
     },
 
     tooShort:
-    {
-        input: {
-            hdr: '1',
-            mke: 'a',
-            oai: 'abc',
-            nam: 'A',
-            sex: 'F',
-            rac: 'A',
-            hgt: '1',
-            wgt: '1',
-            hai: 'ab',
-            off: '1',
-            dow: '01012000',
-            oln: '123',
-            ols: 'al',
-            oly: '01012000',
-            lic: '789',
-            lis: 'k',
-            liy: '01012000'
-        },
-
-        output: {
-            header: "Errors Received:",
-            queryTitle: 'No results generated due to error.',
-            errorList: {
-                war: 'The "Warrant ID" field should be 10 characters long.',
-                hdr: 'The "Header" field should be between 9 and 19 characters long.',
-                mke: 'The "MKE" field should be between 2 and 4 characters long.',
-                oai: 'The "MKE" field should be between 2 and 4 characters long.',
-                nam: 'The "Name" field should be between 1 and 30 characters long.',
-                sex: 'The "Sex" field should be 1 character long.',
-                rac: 'The "Race" field should be 1 character long.',
-                hgt: 'The "Height" field should be 3 characters long.',
-                wgt: 'The "Weight" field should be between 1 and 3 characters long.',
-                hai: 'The "Weight" field should be between 1 and 3 characters long.',
-                off: 'The "Offense" field should be between 5 and 15 characters long.',
-                dow: 'The "Date of Warrant/Violation" field should be 8 characters long.',
-                oln: 'The "Drivers\' License" field should be between 1 and 20 characters long.',
-                ols: 'The "DL State" field should be 2 characters long.',
-                oly: 'The "DL Expiration Date" field should be 8 characters long.',
-                lic: 'The "License Plate" field should be between 5 and 8 characters long.',
-                lis: 'The "License State" field should be 2 characters long.',
-                liy: 'The "License Year" field should be 4 characters long.'
+        {
+            input: {
+                hdr: '1',
+                mke: 'a',
+                oai: 'abc',
+                nam: 'A',
+                sex: 'F',
+                rac: 'W',
+                hgt: '1',
+                wgt: '1',
+                hai: 'ab',
+                off: 'a',
+                dow: '01012000',
+                oln: '123',
+                ols: 'al',
+                oly: '01012000',
+                lic: '789',
+                lis: 'k',
+                liy: '01012000'
             },
-            assembledQuery: '',
 
-        }
-    },
+            output: {
+                header: "Errors Received:",
+                queryTitle: 'No results generated due to error.',
+                errorList: {
+                    war: 'The "Warrant ID" field should be 10 characters long.',
+                    hdr: 'The "Header" field should be between 9 and 19 characters long.',
+                    mke: 'The "MKE" field should be between 2 and 4 characters long.',
+                    oai: 'The "MKE" field should be between 2 and 4 characters long.',
+                    nam: 'The "Name" field should be between 1 and 30 characters long.',
+                    sex: 'The "Sex" field should be 1 character long.',
+                    rac: 'The "Race" field should be 1 character long.',
+                    hgt: 'The "Height" field should be 3 characters long.',
+                    wgt: 'The "Weight" field should be between 1 and 3 characters long.',
+                    hai: 'The "Weight" field should be between 1 and 3 characters long.',
+                    off: 'The "Offense" field should be between 5 and 15 characters long.',
+                    dow: 'The "Date of Warrant/Violation" field should be 8 characters long.',
+                    oln: 'The "Drivers\' License" field should be between 1 and 20 characters long.',
+                    ols: 'The "DL State" field should be 2 characters long.',
+                    oly: 'The "DL Expiration Date" field should be 8 characters long.',
+                    lic: 'The "License Plate" field should be between 5 and 8 characters long.',
+                    lis: 'The "License State" field should be 2 characters long.',
+                    liy: 'The "License Year" field should be 4 characters long.'
+                },
+                assembledQuery: '',
+
+            }
+        },
 
     tooLong:
         {
@@ -128,6 +128,80 @@ module.exports = {
                 assembledQuery: ''
             }
 
+        },
+
+    invalidPeriods:
+        {
+            input: {
+                hdr: '.........',
+                mke: '..',
+                oai: '.........',
+                nam: '...',
+                sex: '.',
+                rac: '.',
+                hgt: '...',
+                wgt: '...',
+                hai: '...',
+                off: '.....',
+                dow: '01012000',
+                oln: '..........',
+                ols: '..',
+                oly: '01012000',
+                lic: '.....',
+                lis: '..',
+                liy: '01012000'
+            },
+
+            output: {
+                header: "Errors Received:",
+                queryTitle: 'No results generated due to error.',
+                errorList: {
+                    war: 'The "Warrant ID" field should be 10 characters long.',
+                    hgt: 'The "Height" field should be 3 characters long.',
+                    wgt: 'The "Weight" field should be between 1 and 3 characters long.',
+                },
+                assembledQuery: ''
+            }
+        },
+
+        alphabeticalCharacters:
+        {
+            input: {
+                hdr: 'abdefghi',
+                mke: 'ab',
+                oai: 'abcdefghi',
+                nam: 'abc',
+                hgt: 'abc',
+                wgt: 'abc',
+                hai: 'abc',
+                off: 'abcde',
+                dow: '01012000',
+                oln: 'abcdefghij',
+                ols: 'ab',
+                oly: '01012000',
+                lic: 'abcde',
+                lis: 'ab',
+                liy: '01012000'
+            },
+
+            output: {
+                header: "Errors Received:",
+                queryTitle: 'No results generated due to error.',
+                errorList: {
+                    war: 'The "Warrant ID" field should be 10 characters long.',
+                    mke: 'The field named "MKE" must be included.',
+                    oai: 'The field named "Originating Agency Identifier" must be included.',
+                    nam: 'The field named "Name" must be included.',
+                    sex: 'The field named "Sex" must be included.',
+                    rac: 'The field named "Race" must be included.',
+                    hgt: 'The field named "Height" must be included.',
+                    wgt: 'The field named "Weight" must be included.',
+                    hai: 'The field named "Hair" must be included.',
+                    off: 'The field named "Offense" must be included.',
+                    dow: 'The field named "Date of Warrant/Violation" must be included.'
+                },
+                assembledQuery: ''
+            }
         },
 
     blanks:
