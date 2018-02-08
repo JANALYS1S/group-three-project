@@ -16,13 +16,6 @@ module.exports = {
         lis: 'input[name="lisInput"]'
     },
 
-        
-    //'Warrant ID' field selector for 'Modify Wanted' and 'Cancel Wanted'
-    war: 'input[name="widInput"]',
-
-    //'Reason for Cancellation' field selector for 'Cancel Wanted'
-    rfc: 'input[name="resInput"]',
-
     calendars: {
         //'Date of Warrant/Violation'
         dow: 'input[name="dowInput"]',
@@ -32,10 +25,16 @@ module.exports = {
 
         //'License Expiration Date'
         lid: 'input[name="lidInput"]',
-
-        //'Date of Cancellation' form for 'Cancel Wanted'
-        dat: 'input[name="datInput"]'
     },
+ 
+    //'Warrant ID' field selector for 'Modify Wanted' and 'Cancel Wanted'
+    war: 'input[name="widInput"]',
+
+    //'Reason for Cancellation' field selector for 'Cancel Wanted'
+    rfc: 'input[name="resInput"]',
+
+    //'Date of Cancellation' form for 'Cancel Wanted'
+    dat: 'input[name="datInput"]',
 
     dropdowns: {
         sex: 'select[name = "sexInput"]',

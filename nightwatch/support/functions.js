@@ -42,5 +42,22 @@ module.exports = {
         keys.forEach(key => {
             browser.verify.containsText(errorList, outputs[key])
         })
+    },
+
+    setFields: (selectors, inputs, browser) => {
+        let keys = Object.getOwnPropertyNames(selectors)
+        keys.forEach(key => {
+            browser
+                .clearValue(selectors[key])
+                .setValue(selectors[key], inputs[key])
+        })
+    },
+
+    verifyAll: (selectors, inputs, browser) =>
+    {
+        inputs.forEach(input =>
+        {
+
+        })
     }
 }

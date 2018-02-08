@@ -33,12 +33,11 @@ module.exports = {
         browser.click(selectors.dropdowns.raceAsian)
 
         //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.justLongEnough.input.dow)
-        browser.setValue(selectors.calendars.old, data.justLongEnough.input.oly)
-        browser.setValue(selectors.calendars.lid, data.justLongEnough.input.liy)
+        functions.setFields(selectors.calendars,data.justLongEnough.input, browser)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
+        browser.pause(10000)
 
         //now I'll check that all the expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.justLongEnough.output.header)
@@ -68,9 +67,7 @@ module.exports = {
         browser.click(selectors.dropdowns.raceAsian)
 
         //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.justLongEnough.input.dow)
-        browser.setValue(selectors.calendars.old, data.justLongEnough.input.oly)
-        browser.setValue(selectors.calendars.lid, data.justLongEnough.input.liy)
+        functions.enterFields(selectors.fields, data.justLongEnough.input, browser)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -127,9 +124,7 @@ module.exports = {
         browser.click(selectors.dropdowns.raceAsian)
 
         //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.almostTooLong.input.dow)
-        browser.setValue(selectors.calendars.old, data.almostTooLong.input.oly)
-        browser.setValue(selectors.calendars.lid, data.almostTooLong.input.liy)
+        functions.enterFields(selectors.fields, data.almostTooLong.input, browser)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -162,9 +157,7 @@ module.exports = {
         browser.click(selectors.dropdowns.raceAsian)
 
         //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.almostTooLong.input.dow)
-        browser.setValue(selectors.calendars.old, data.almostTooLong.input.oly)
-        browser.setValue(selectors.calendars.lid, data.almostTooLong.input.liy)
+        functions.enterFields(selectors.fields, data.almostTooLong.input, browser)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -214,14 +207,6 @@ module.exports = {
 
         //enters input fields
         functions.enterFields(selectors.fields, data.tooShort.input, browser)
-        browser
-
-        //enters dropdown fields
-        browser.click(selectors.dropdowns.sexFemale)
-        browser.click(selectors.dropdowns.raceAsian)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -255,14 +240,6 @@ module.exports = {
 
         //enters input fields
         functions.enterFields(selectors.fields, data.tooShort.input, browser)
-        browser
-
-        //enters dropdown fields
-        browser.click(selectors.dropdowns.sexFemale)
-        browser.click(selectors.dropdowns.raceAsian)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -320,13 +297,6 @@ module.exports = {
         //enters input fields
         functions.enterFields(selectors.fields, data.tooLong.input, browser)
 
-        //enters dropdown fields
-        browser.click(selectors.dropdowns.sexFemale)
-        browser.click(selectors.dropdowns.raceAsian)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
-
         //clicks submit
         browser.click(selectors.buttons.submit)
 
@@ -357,19 +327,10 @@ module.exports = {
         browser.pause(3000)
 
         //sets warrantID field
-        browser.setValue(selectors.war, data.tooLong.input.war)
-
-        functions.enterValue(selectors.war, data.tooShort.input.war, browser)
+        functions.enterValue(selectors.war, data.tooLong.input.war, browser)
 
         //enters input fields
         functions.enterFields(selectors.fields, data.tooLong.input, browser)
-
-        //enters dropdown fields
-        browser.click(selectors.dropdowns.sexFemale)
-        browser.click(selectors.dropdowns.raceAsian)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -409,7 +370,7 @@ module.exports = {
         browser.click(selectors.buttons.submit)
 
         //now I'll check that all the expected results are correct
-        browser.expect.element(selectors.messages.header).text.to.equal(data.tooShort.output.header)
+        browser.expect.element(selectors.messages.header).text.to.equal(data.tooLong.output.header)
 
         //checks that each error message that is listed in the data has been printed
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['war'])
@@ -432,13 +393,6 @@ module.exports = {
 
         //enters input fields
         functions.enterFields(selectors.fields, data.invalidPeriods.input, browser)
-
-        //enters dropdown fields
-        browser.click(selectors.dropdowns.sexFemale)
-        browser.click(selectors.dropdowns.raceAsian)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -477,13 +431,6 @@ module.exports = {
 
         //enters input fields
         functions.enterFields(selectors.fields, data.invalidPeriods.input, browser)
-
-        //enters dropdown fields
-        browser.click(selectors.dropdowns.sexFemale)
-        browser.click(selectors.dropdowns.raceAsian)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -551,14 +498,6 @@ module.exports = {
 
         //enters input fields
         functions.enterFields(selectors.fields, data.alphabeticalCharacters.input, browser)
-        browser
-
-        //enters dropdown fields
-        browser.click(selectors.dropdowns.sexFemale)
-        browser.click(selectors.dropdowns.raceAsian)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -650,13 +589,6 @@ module.exports = {
         //enters input fields
         functions.enterFields(selectors.fields, data.specialCharacters.input, browser)
 
-        //enters dropdown fields
-        browser.click(selectors.dropdowns.sexFemale)
-        browser.click(selectors.dropdowns.raceAsian)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
-
         //clicks submit
         browser.click(selectors.buttons.submit)
 
@@ -693,13 +625,6 @@ module.exports = {
 
         //enters input fields
         functions.enterFields(selectors.fields, data.specialCharacters.input, browser)
-
-        //enters dropdown fields
-        browser.click(selectors.dropdowns.sexFemale)
-        browser.click(selectors.dropdowns.raceAsian)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -761,13 +686,6 @@ module.exports = {
         //enters input fields
         functions.enterFields(selectors.fields, data.numericalCharacters.input, browser)
 
-        //enters dropdown fields
-        browser.click(selectors.dropdowns.sexFemale)
-        browser.click(selectors.dropdowns.raceAsian)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
-
         //clicks submit
         browser.click(selectors.buttons.submit)
 
@@ -808,13 +726,6 @@ module.exports = {
 
         //enters input fields
         functions.enterFields(selectors.fields, data.numericalCharacters.input, browser)
-
-        //enters dropdown fields
-        browser.click(selectors.dropdowns.sexFemale)
-        browser.click(selectors.dropdowns.raceAsian)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
 
         //clicks submit
         browser.click(selectors.buttons.submit)

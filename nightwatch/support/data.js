@@ -1,5 +1,5 @@
 module.exports = {
-    
+
     goodData: {
         input: {
             hdr: '123456789',
@@ -15,10 +15,10 @@ module.exports = {
             dow: '05022016',
             oln: '',
             ols: '',
-            oly: '',
+            old: '',
             lic: '',
             lis: '',
-            liy: ''
+            lid: ''
         },
 
         output: {
@@ -44,10 +44,10 @@ module.exports = {
             dow: '05022016',
             oln: '12345',
             ols: '',
-            oly: '',
+            old: '',
             lic: '',
             lis: 'UT',
-            liy: ''
+            lid: ''
         },
         output: {
             header: 'Errors Received:',
@@ -76,10 +76,10 @@ module.exports = {
             dow: '05022016',
             oln: '1',
             ols: 'IL',
-            oly: '05022016',
+            old: '05022016',
             lic: 'abc12',
             lis: 'IL',
-            liy: '05022016'
+            lid: '05022016'
         },
 
         output: {
@@ -108,10 +108,10 @@ module.exports = {
             dow: '05022016',
             oln: '12345678901234567890',
             ols: 'IL',
-            oly: '05022016',
+            old: '05022016',
             lic: '12345678',
             lis: 'IL',
-            liy: '05022016'
+            lid: '05022016'
         },
 
         output: {
@@ -148,34 +148,36 @@ module.exports = {
                 dow: '0101200',
                 oln: '1',
                 ols: 'A',
-                oly: '0101200',
+                old: '0101200',
                 lic: '1',
                 lis: 'A',
-                liy: '0101200'
+                lid: '0101200'
             },
 
             output: {
                 header: "Errors Received:",
                 queryTitle: 'No results generated due to error.',
                 errorList: {
+                    enterWanted: {
+                        hdr: 'The "Header" field should be between 9 and 19 characters long.',
+                        mke: 'The "MKE" field should be between 2 and 4 characters long.',
+                        oai: 'The "Originating Agency Identifier" field should be 9 characters long.',
+                        nam: 'The "Name" field should be between 3 and 30 characters long.',
+                        hgt: 'The "Height" field should be 3 characters long.',
+                        wgt: 'The "Weight" field should be between 1 and 3 characters long.',
+                        hai: 'The "Hair" field should be between 3 and 10 characters long.',
+                        off: 'The "Offense" field should be between 5 and 15 characters long.',
+                        dow: 'The "Date of Warrant/Violation" field should be 8 characters long.',
+                        oln: 'The "Drivers\' License" field should be between 1 and 20 characters long.',
+                        ols: 'The "DL State" field should be 2 characters long.',
+                        old: 'The "DL Expiration Date" field should be 8 characters long.',
+                        lic: 'The "License Plate" field should be between 5 and 8 characters long.',
+                        lis: 'The "License State" field should be 2 characters long.',
+                        lid: 'The "License Year" field should be 4 characters long.'
+                    },
                     war: 'The "Warrant ID" field should be 10 characters long.',
                     rfc: 'The "Reason for Cancellation" field should be between 10 and 150 characters long.',
                     doc: 'The "Date of Cancellation" field can include dates after 1900.',
-                    hdr: 'The "Header" field should be between 9 and 19 characters long.',
-                    mke: 'The "MKE" field should be between 2 and 4 characters long.',
-                    oai: 'The "Originating Agency Identifier" field should be 9 characters long.',
-                    nam: 'The "Name" field should be between 3 and 30 characters long.',
-                    hgt: 'The "Height" field should be 3 characters long.',
-                    wgt: 'The "Weight" field should be between 1 and 3 characters long.',
-                    hai: 'The "Hair" field should be between 3 and 10 characters long.',
-                    off: 'The "Offense" field should be between 5 and 15 characters long.',
-                    dow: 'The "Date of Warrant/Violation" field should be 8 characters long.',
-                    oln: 'The "Drivers\' License" field should be between 1 and 20 characters long.',
-                    ols: 'The "DL State" field should be 2 characters long.',
-                    oly: 'The "DL Expiration Date" field should be 8 characters long.',
-                    lic: 'The "License Plate" field should be between 5 and 8 characters long.',
-                    lis: 'The "License State" field should be 2 characters long.',
-                    liy: 'The "License Year" field should be 4 characters long.'
                 },
                 assembledQuery: '',
 
@@ -198,34 +200,36 @@ module.exports = {
                 dow: '010120001',
                 oln: '123456789012345678901',
                 ols: 'KAN',
-                oly: '010120001',
+                old: '010120001',
                 lic: '123456789',
                 lis: 'KAN',
-                liy: '010120001'
+                lid: '010120001'
             },
 
             output: {
                 header: "Errors Received:",
                 queryTitle: 'No results generated due to error.',
                 errorList: {
+                    enterWanted: {
+                        hdr: 'The "Header" field should be between 9 and 19 characters long.',
+                        mke: 'The "MKE" field should be between 2 and 4 characters long.',
+                        oai: 'The "Originating Agency Identifier" field should be 9 characters long.',
+                        nam: 'The "Name" field should be between 3 and 30 characters long.',
+                        hgt: 'The "Height" field should be 3 characters long.',
+                        wgt: 'The "Weight" field should be between 1 and 3 characters long.',
+                        hai: 'The "Hair" field should be between 3 and 10 characters long.',
+                        off: 'The "Offense" field should be between 5 and 15 characters long.',
+                        dow: 'The "Date of Warrant/Violation" field should be 8 characters long.',
+                        oln: 'The "Drivers License" field should be between 1 and 20 characters long.',
+                        ols: 'The "DL State" field should be 2 characters long.',
+                        old: 'The "DL Expiration Date" field should be 8 characters long.',
+                        lic: 'The "License Plate" field should be between 5 and 8 characters long.',
+                        lis: 'The "License State" field should be 2 characters long.',
+                        lid: 'The "License Year" field should be 4 characters long.'
+                    },
                     war: 'The "Warrant ID" field should be 10 characters long.',
                     rfc: 'The "Reason for Cancellation" field should be between 10 and 150 characters long.',
                     doc: 'The "Date of Cancellation" field can include dates after 1900.',
-                    hdr: 'The "Header" field should be between 9 and 19 characters long.',
-                    mke: 'The "MKE" field should be between 2 and 4 characters long.',
-                    oai: 'The "Originating Agency Identifier" field should be 9 characters long.',
-                    nam: 'The "Name" field should be between 3 and 30 characters long.',
-                    hgt: 'The "Height" field should be 3 characters long.',
-                    wgt: 'The "Weight" field should be between 1 and 3 characters long.',
-                    hai: 'The "Hair" field should be between 3 and 10 characters long.',
-                    off: 'The "Offense" field should be between 5 and 15 characters long.',
-                    dow: 'The "Date of Warrant/Violation" field should be 8 characters long.',
-                    oln: 'The "Drivers License" field should be between 1 and 20 characters long.',
-                    ols: 'The "DL State" field should be 2 characters long.',
-                    oly: 'The "DL Expiration Date" field should be 8 characters long.',
-                    lic: 'The "License Plate" field should be between 5 and 8 characters long.',
-                    lis: 'The "License State" field should be 2 characters long.',
-                    liy: 'The "License Year" field should be 4 characters long.'
                 },
                 queryTitle: 'No results generated due to error.',
                 assembledQuery: ''
@@ -251,36 +255,38 @@ module.exports = {
                 dow: '........',
                 oln: '..........',
                 ols: '..',
-                oly: '........',
+                old: '........',
                 lic: '.....',
                 lis: '..',
-                liy: '........'
+                lid: '........'
             },
 
             output: {
                 header: "Errors Received:",
                 queryTitle: 'No results generated due to error.',
                 errorList: {
+                    enterWanted: {
+                        hdr: 'The "Header" field has one or more periods, which are unacceptable in any field.',
+                        mke: 'The "MKE" field has one or more periods, which are unacceptable in any field.',
+                        oai: 'The "Originating Agency Identifier" field has one or more periods, which are unacceptable in any field.',
+                        nam: 'The "Name" field has one or more periods, which are unacceptable in any field.',
+                        sex: 'The "Sex" field should be 1 character long.',
+                        rac: 'The "Race" field should be 1 character long.',
+                        hgt: 'The "Height" field has one or more periods, which are unacceptable in any field.',
+                        wgt: 'The "Weight" field has one or more periods, which are unacceptable in any field.',
+                        hai: 'The "Hair" field has one or more periods, which are unacceptable in any field.',
+                        off: 'The "Offense" field has one or more periods, which are unacceptable in any field.',
+                        dow: 'The "Date of Warrant/Violation" field should be 8 characters long.',
+                        oln: 'The "Drivers License" field has one or more periods, which are unacceptable in any field.',
+                        ols: 'The "DL State" field has one or more periods, which are unacceptable in any field.',
+                        old: 'The "DL Expiration Date" field should be 8 characters long.',
+                        lic: 'The "License Plate" field has one or more periods, which are unacceptable in any field.',
+                        lis: 'The "License State" field has one or more periods, which are unacceptable in any field.',
+                        lid: 'The "License Year" field should be 4 characters long.'
+                    }
                     war: 'The "Warrant ID" field has one or more periods, which are unacceptable in any field.',
                     rfc: 'The "Reason for Cancellation" field has one or more periods, which are unacceptable in any field.',
                     doc: 'The "Date of Cancellation" field can include dates after 1900.',
-                    hdr: 'The "Header" field has one or more periods, which are unacceptable in any field.',
-                    mke: 'The "MKE" field has one or more periods, which are unacceptable in any field.',
-                    oai: 'The "Originating Agency Identifier" field has one or more periods, which are unacceptable in any field.',
-                    nam: 'The "Name" field has one or more periods, which are unacceptable in any field.',
-                    sex: 'The "Sex" field should be 1 character long.',
-                    rac: 'The "Race" field should be 1 character long.',
-                    hgt: 'The "Height" field has one or more periods, which are unacceptable in any field.',
-                    wgt: 'The "Weight" field has one or more periods, which are unacceptable in any field.',
-                    hai: 'The "Hair" field has one or more periods, which are unacceptable in any field.',
-                    off: 'The "Offense" field has one or more periods, which are unacceptable in any field.',
-                    dow: 'The "Date of Warrant/Violation" field should be 8 characters long.',
-                    oln: 'The "Drivers License" field has one or more periods, which are unacceptable in any field.',
-                    ols: 'The "DL State" field has one or more periods, which are unacceptable in any field.',
-                    oly: 'The "DL Expiration Date" field should be 8 characters long.',
-                    lic: 'The "License Plate" field has one or more periods, which are unacceptable in any field.',
-                    lis: 'The "License State" field has one or more periods, which are unacceptable in any field.',
-                    liy: 'The "License Year" field should be 4 characters long.'
                 },
                 assembledQuery: ''
             }
@@ -302,21 +308,23 @@ module.exports = {
                 dow: '01012000',
                 oln: 'abcdefghij',
                 ols: 'ab',
-                oly: '01012000',
+                old: '01012000',
                 lic: 'abcde',
                 lis: 'ab',
-                liy: '01012000'
+                lid: '01012000'
             },
 
             output: {
                 header: "Errors Received:",
                 queryTitle: 'No results generated due to error.',
                 errorList: {
+                    enterWanted: {
+                        hgt: 'The "Height" field can only include numeric characters.',
+                        wgt: 'The "Weight" field can only include numeric characters.',
+                        ols: 'The "DL State" field can only include a valid State/Territory abbreviation.',
+                        lis: 'The "License State" field can only include a valid State/Territory abbreviation.'
+                    },
                     war: 'The "Warrant ID" field can only include numeric characters.',
-                    hgt: 'The "Height" field can only include numeric characters.',
-                    wgt: 'The "Weight" field can only include numeric characters.',
-                    ols: 'The "DL State" field can only include a valid State/Territory abbreviation.',
-                    lis: 'The "License State" field can only include a valid State/Territory abbreviation.'
                 },
                 assembledQuery: ''
             }
@@ -338,23 +346,25 @@ module.exports = {
                 dow: '01012000',
                 oln: '!@#$%^`~(|',
                 ols: '__',
-                oly: '01012000',
+                old: '01012000',
                 lic: '=-)(*',
                 lis: '/]',
-                liy: '01012000'
+                lid: '01012000'
             },
 
             output: {
                 header: "Errors Received:",
                 queryTitle: 'No results generated due to error.',
                 errorList: {
+                    enterWanted: {
+                        oai: 'The "Originating Agency Identifier" field can only include characters from the English Alphabet or numeric characters.',
+                        hgt: 'The "Height" field can only include numeric characters.',
+                        wgt: 'The "Weight" field can only include numeric characters.',
+                        hai: 'can only include characters from the English Alphabet.',
+                        ols: 'The "DL State" field can only include a valid State/Territory abbreviation.',
+                        lis: 'The "License State" field can only include a valid State/Territory abbreviation.'
+                    },
                     war: 'The "Warrant ID" field can only include numeric characters.',
-                    oai: 'The "Originating Agency Identifier" field can only include characters from the English Alphabet or numeric characters.',
-                    hgt: 'The "Height" field can only include numeric characters.',
-                    wgt: 'The "Weight" field can only include numeric characters.',
-                    hai: 'can only include characters from the English Alphabet.',
-                    ols: 'The "DL State" field can only include a valid State/Territory abbreviation.',
-                    lis: 'The "License State" field can only include a valid State/Territory abbreviation.'
                 },
                 assembledQuery: ''
             }
@@ -376,20 +386,22 @@ module.exports = {
                 dow: '01012000',
                 oln: '1234567890',
                 ols: '12',
-                oly: '01012000',
+                old: '01012000',
                 lic: '12345',
                 lis: '12',
-                liy: '01012000'
+                lid: '01012000'
             },
 
             output: {
                 header: "Errors Received:",
                 queryTitle: 'No results generated due to error.',
                 errorList: {
-                    mke: 'The "MKE" field can only include characters from the English Alphabet or special characters.',
-                    hai: 'The "Hair" field can only include characters from the English Alphabet.',
-                    ols: 'The "DL State" field can only include a valid State/Territory abbreviation.',
-                    lis: 'The "License State" field can only include a valid State/Territory abbreviation.'
+                    enterWanted: {
+                        mke: 'The "MKE" field can only include characters from the English Alphabet or special characters.',
+                        hai: 'The "Hair" field can only include characters from the English Alphabet.',
+                        ols: 'The "DL State" field can only include a valid State/Territory abbreviation.',
+                        lis: 'The "License State" field can only include a valid State/Territory abbreviation.'
+                    }
                 },
                 assembledQuery: ''
             }
