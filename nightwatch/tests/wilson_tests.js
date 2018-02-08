@@ -33,11 +33,12 @@ module.exports = {
         browser.click(selectors.dropdowns.raceAsian)
 
         //enters calendar fields
-        functions.setFields(selectors.calendars,data.justLongEnough.input, browser)
+        browser.setValue(selectors.calendars.dow, data.justLongEnough.input.dow)
+        browser.setValue(selectors.calendars.old, data.justLongEnough.input.old)
+        browser.setValue(selectors.calendars.lid, data.justLongEnough.input.lid)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
-        browser.pause(10000)
 
         //now I'll check that all the expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.justLongEnough.output.header)
@@ -67,7 +68,9 @@ module.exports = {
         browser.click(selectors.dropdowns.raceAsian)
 
         //enters calendar fields
-        functions.enterFields(selectors.fields, data.justLongEnough.input, browser)
+        browser.setValue(selectors.calendars.dow, data.justLongEnough.input.dow)
+        browser.setValue(selectors.calendars.old, data.justLongEnough.input.old)
+        browser.setValue(selectors.calendars.lid, data.justLongEnough.input.lid)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -77,7 +80,7 @@ module.exports = {
         browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.justLongEnough.output.queryTitle)
     },
 
-    'Cancel Wanted: Just Long Enough Test': browser => {
+    'Cancel Wanted: Just Long Enough': browser => {
         //Checks if inputs are accepted at its minimum allowed length.
         //Does not check for calendar inputs or the assembled query.
 
@@ -117,14 +120,15 @@ module.exports = {
 
         //enters input fields
         functions.enterFields(selectors.fields, data.almostTooLong.input, browser)
-        browser
 
         //enters dropdown fields
         browser.click(selectors.dropdowns.sexFemale)
         browser.click(selectors.dropdowns.raceAsian)
 
         //enters calendar fields
-        functions.enterFields(selectors.fields, data.almostTooLong.input, browser)
+        browser.setValue(selectors.calendars.dow, data.almostTooLong.input.dow)
+        browser.setValue(selectors.calendars.old, data.almostTooLong.input.old)
+        browser.setValue(selectors.calendars.lid, data.almostTooLong.input.lid)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -157,7 +161,9 @@ module.exports = {
         browser.click(selectors.dropdowns.raceAsian)
 
         //enters calendar fields
-        functions.enterFields(selectors.fields, data.almostTooLong.input, browser)
+        browser.setValue(selectors.calendars.dow, data.almostTooLong.input.dow)
+        browser.setValue(selectors.calendars.old, data.almostTooLong.input.old)
+        browser.setValue(selectors.calendars.lid, data.almostTooLong.input.lid)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
