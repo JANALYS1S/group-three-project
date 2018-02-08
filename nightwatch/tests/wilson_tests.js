@@ -1,6 +1,6 @@
 const selectors = require('../support/selectors')
-const functions = require('../support/WWfunctions')
-const data = require('../support/WWdata')
+const functions = require('../support/functions')
+const data = require('../support/data')
 
 module.exports = {
     beforeEach: browser => {
@@ -13,7 +13,9 @@ module.exports = {
         browser.end()
     },
 
-    'Enter Wanted: Valid Data Test': browser => {
+    'Enter Wanted: Just Long Enough': browser => {
+        //Checks if inputs are accepted at its minimum allowed length.
+        //Does not check for calendar inputs or the assembled query.
 
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
@@ -24,28 +26,28 @@ module.exports = {
         browser.pause(3000)
 
         //enters input fields
-        functions.enterFields(selectors.fields, data.goodData.input, browser)
-        browser
+        functions.enterFields(selectors.fields, data.justLongEnough.input, browser)
 
         //enters dropdown fields
         browser.click(selectors.dropdowns.sexFemale)
         browser.click(selectors.dropdowns.raceAsian)
 
         //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
-        browser.setValue(selectors.calendars.old, data.goodData.input.oly)
-        browser.setValue(selectors.calendars.lid, data.goodData.input.liy)
+        browser.setValue(selectors.calendars.dow, data.justLongEnough.input.dow)
+        browser.setValue(selectors.calendars.old, data.justLongEnough.input.oly)
+        browser.setValue(selectors.calendars.lid, data.justLongEnough.input.liy)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
 
         //now I'll check that all the expected results are correct
-        browser.expect.element(selectors.messages.header).text.to.equal(data.goodData.output.header)
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.goodData.output.queryTitle)
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.goodData.output.assembledQuery)
+        browser.expect.element(selectors.messages.header).text.to.equal(data.justLongEnough.output.header)
+        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.justLongEnough.output.queryTitle)
     },
 
-    'Modify Wanted: Valid Data Test': browser => {
+    'Modify Wanted: Just Long Enough': browser => {
+        //Checks if inputs are accepted at its minimum allowed length.
+        //Does not check for calendar inputs or the assembled query.
 
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
@@ -56,29 +58,151 @@ module.exports = {
         browser.pause(3000)
 
         //sets warrant id field
-        functions.enterValue(selectors.war, data.goodData.input.war, browser)
-        
+        functions.enterValue(selectors.war, data.justLongEnough.input.war, browser)
+
         //enters input fields
-        functions.enterFields(selectors.fields, data.goodData.input, browser)
+        functions.enterFields(selectors.fields, data.justLongEnough.input, browser)
 
         //enters dropdown fields
         browser.click(selectors.dropdowns.sexFemale)
         browser.click(selectors.dropdowns.raceAsian)
 
         //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
-        browser.setValue(selectors.calendars.old, data.goodData.input.oly)
-        browser.setValue(selectors.calendars.lid, data.goodData.input.liy)
+        browser.setValue(selectors.calendars.dow, data.justLongEnough.input.dow)
+        browser.setValue(selectors.calendars.old, data.justLongEnough.input.oly)
+        browser.setValue(selectors.calendars.lid, data.justLongEnough.input.liy)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
 
         //now I'll check that all the expected results are correct
-        browser.expect.element(selectors.messages.header).text.to.equal(data.goodData.output.header)
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.goodData.output.queryTitle)
+        browser.expect.element(selectors.messages.header).text.to.equal(data.justLongEnough.output.header)
+        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.justLongEnough.output.queryTitle)
     },
 
-    'Enter Wanted: Too Short Test': browser => {
+    'Cancel Wanted: Just Long Enough Test': browser => {
+        //Checks if inputs are accepted at its minimum allowed length.
+        //Does not check for calendar inputs or the assembled query.
+
+        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
+        browser.click(selectors.buttons.menuButton)
+
+        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.cancelW, 60000)
+        browser.click(selectors.buttons.cancelW)
+        browser.pause(3000)
+
+        //enter values
+        functions.enterValue(selectors.war, data.justLongEnough.input.war, browser)
+        functions.enterValue(selectors.rfc, data.justLongEnough.input.rfc, browser)
+        browser.setValue(selectors.calendars.dat, data.justLongEnough.input.dat)
+
+        //clicks submit
+        browser.click(selectors.buttons.submit)
+
+        // now I'll check that all the expected results are correct 
+        /* BUG - See GWQ-66
+        browser.expect.element(selectors.messages.header).text.to.equal(data.justLongEnough.output.header)
+        */
+    },
+
+    'Enter Wanted: Almost Too Long': browser => {
+        //Checks if inputs are accepted at its maximum allowed length.
+        //Does not check for calendar inputs or the assembled query.
+
+        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
+        browser.click(selectors.buttons.menuButton)
+
+        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.enterW, 60000)
+        browser.click(selectors.buttons.enterW)
+        browser.pause(3000)
+
+        //enters input fields
+        functions.enterFields(selectors.fields, data.almostTooLong.input, browser)
+        browser
+
+        //enters dropdown fields
+        browser.click(selectors.dropdowns.sexFemale)
+        browser.click(selectors.dropdowns.raceAsian)
+
+        //enters calendar fields
+        browser.setValue(selectors.calendars.dow, data.almostTooLong.input.dow)
+        browser.setValue(selectors.calendars.old, data.almostTooLong.input.oly)
+        browser.setValue(selectors.calendars.lid, data.almostTooLong.input.liy)
+
+        //clicks submit
+        browser.click(selectors.buttons.submit)
+
+        //now I'll check that all the expected results are correct
+        browser.expect.element(selectors.messages.header).text.to.equal(data.almostTooLong.output.header)
+        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.almostTooLong.output.queryTitle)
+    },
+
+    'Modify Wanted: Almost Too Long': browser => {
+        //Checks if inputs are accepted at its maximum allowed length.
+        //Does not check for calendar inputs or the assembled query.
+
+        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
+        browser.click(selectors.buttons.menuButton)
+
+        //waits for the menu options to appear, and then clicks 'Modify Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.modifyW, 60000)
+        browser.click(selectors.buttons.modifyW)
+        browser.pause(3000)
+
+        //sets warrant id field
+        functions.enterValue(selectors.war, data.almostTooLong.input.war, browser)
+
+        //enters input fields
+        functions.enterFields(selectors.fields, data.almostTooLong.input, browser)
+
+        //enters dropdown fields
+        browser.click(selectors.dropdowns.sexFemale)
+        browser.click(selectors.dropdowns.raceAsian)
+
+        //enters calendar fields
+        browser.setValue(selectors.calendars.dow, data.almostTooLong.input.dow)
+        browser.setValue(selectors.calendars.old, data.almostTooLong.input.oly)
+        browser.setValue(selectors.calendars.lid, data.almostTooLong.input.liy)
+
+        //clicks submit
+        browser.click(selectors.buttons.submit)
+
+        //now I'll check that all the expected results are correct
+        browser.expect.element(selectors.messages.header).text.to.equal(data.almostTooLong.output.header)
+        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.almostTooLong.output.queryTitle)
+    },
+
+    'Cancel Wanted: Almost Too Long': browser => {
+        //Checks if inputs are accepted at its maximum allowed length.
+        //Does not check for calendar inputs or the assembled query.
+
+        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
+        browser.click(selectors.buttons.menuButton)
+
+        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.cancelW, 60000)
+        browser.click(selectors.buttons.cancelW)
+        browser.pause(3000)
+
+        //enter values
+        functions.enterValue(selectors.war, data.almostTooLong.input.war, browser)
+        functions.enterValue(selectors.rfc, data.almostTooLong.input.rfc, browser)
+        browser.setValue(selectors.calendars.dat, data.almostTooLong.input.dat)
+
+        //clicks submit
+        browser.click(selectors.buttons.submit)
+
+        // now I'll check that all the expected results are correct
+        /* BUG - See GWQ-66
+        browser.expect.element(selectors.messages.header).text.to.equal(data.almostTooLong.output.header)
+        */
+    },
+
+    'Enter Wanted: One Character Too Short Test': browser => {
+        //Verifies error messages for inputs submitted one character below its minimum accepted length
+        //Does not check for calendar inputs
 
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
@@ -102,9 +226,6 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
-        browser.expect.element(selectors.messages.header).text.to.equal(data.tooShort.output.header)
-
         //checks that each error message that is listed in the data has been printed
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['hdr'])
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['mke'])
@@ -113,33 +234,15 @@ module.exports = {
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['hgt'])
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['hai'])
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['off'])
-
-        /* BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['dow'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['ols'])
-
-        /* BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['oly'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['lic'])
-
-        /* BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['liy'])
-        */
-
-        //checks queryTitle
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.tooShort.output.queryTitle)
-
-        //checks the assembledQuery
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.tooShort.output.assembledQuery)
     },
 
-    'Modify Wanted: Too Short Test': browser => {
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
+    'Modify Wanted: One Character Too Short Test': browser => {
+        //Verifies error messages for inputs submitted one character below its minimum accepted length
+        //Does not check for calendar inputs
 
+        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
         //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
@@ -164,9 +267,6 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
-        browser.expect.element(selectors.messages.header).text.to.equal(data.tooShort.output.header)
-
         //checks that each error message that is listed in the data has been printed
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['war'])
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['hdr'])
@@ -176,33 +276,15 @@ module.exports = {
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['hgt'])
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['hai'])
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['off'])
-
-        /*BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['dow'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['ols'])
-
-        /*BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['oly'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['lic'])
-
-        /*BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['liy'])
-        */
-
-        //checks queryTitle
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.tooShort.output.queryTitle)
-
-        //checks the assembledQuery
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.tooShort.output.assembledQuery)
     },
 
-    'Cancel Wanted: Too Short Test': browser => {
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
+    'Cancel Wanted: One Character Too Short Test': browser => {
+        //Verifies error messages for inputs submitted one character below its minimum accepted length
+        //Does not check for calendar inputs
 
+        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
         //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
@@ -218,21 +300,15 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
-        browser.expect.element(selectors.messages.header).text.to.equal(data.tooShort.output.header)
-
         //checks that each error message that is listed in the data has been printed
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['war'])
-
-        /*BUGS
         browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['rfc'])
-        browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['dat'])
-        */
-
-
     },
 
-    'Enter Wanted: Too Long Test': browser => {
+    'Enter Wanted: One Character Too Long Test': browser => {
+        //Verifies error messages for inputs submitted one character above its maximum accepted length
+        //Does not check for calendar inputs
+
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
@@ -254,15 +330,7 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
-        browser.expect.element(selectors.messages.header).text.to.equal(data.tooLong.output.header)
-
         //checks that each error message that is listed in the data has been printed
-
-        /*BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooShort.output.errorList['war'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['hdr'])
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['mke'])
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['oai'])
@@ -271,32 +339,15 @@ module.exports = {
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['wgt'])
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['hai'])
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['off'])
-
-        /*BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['dow'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['oln'])
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['ols'])
-
-        /*BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['oly'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['lic'])
-
-        /*BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['liy'])
-        */
-
-        //checks queryTitle
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.tooLong.output.queryTitle)
-
-        //checks the assembledQuery
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.tooLong.output.assembledQuery)
     },
 
     'Modify Wanted: Too Long Test': browser => {
+        //Verifies error messages for inputs submitted one character above its maximum accepted length
+        //Does not check for calendar inputs
+
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
@@ -323,9 +374,6 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
-        browser.expect.element(selectors.messages.header).text.to.equal(data.tooLong.output.header)
-
         //checks that each error message that is listed in the data has been printed
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['war'])
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['hdr'])
@@ -336,32 +384,15 @@ module.exports = {
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['wgt'])
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['hai'])
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['off'])
-
-        /* BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['dow'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['oln'])
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['ols'])
-
-        /* BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['oly'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['lic'])
-
-        /* BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['liy'])
-        */
-
-        //checks queryTitle
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.tooLong.output.queryTitle)
-
-        //checks the assembledQuery
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.tooLong.output.assembledQuery)
     },
 
     'Cancel Wanted: Too Long Test': browser => {
+        //Verifies error messages for inputs submitted one character above its maximum accepted length
+        //Does not check for calendar inputs
+
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
@@ -382,17 +413,12 @@ module.exports = {
 
         //checks that each error message that is listed in the data has been printed
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['war'])
-
-        /*BUG
         browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['rfc'])
-        */
-
-        /* BUG
-        browser.verify.containsText(selectors.messages.errorList, data.tooLong.output.errorList['dat'])
-        */
     },
 
     "Enter Wanted: Tests for '.'": browser => {
+        //Verifies error messages for inputs submitted with a '.'
+
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
@@ -419,40 +445,25 @@ module.exports = {
 
         //now I'll check that all the expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.invalidPeriods.output.header)
- 
+
         //checks that each error message that is listed in the data has been printed
-        
-        /* BUGS
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['hdr'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['mke'])
-        */
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['oai'])
-
-        /* BUG
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['nam'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['hgt'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['wgt'])
-
-        /* BUGS
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['hai'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['off'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['oln'])
-        */
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['ols'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['lic'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['lis'])
-        
- 
-        //checks queryTitle
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.invalidPeriods.output.queryTitle)
- 
-        //checks the assembledQuery
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.invalidPeriods.output.assembledQuery)
     },
 
     "Modify Wanted: Tests for '.'": browser => {
+        //Verifies error messages for inputs submitted with a '.'
+
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
@@ -482,39 +493,29 @@ module.exports = {
 
         //checks that each error message that is listed in the data has been printed
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['war'])
-
-        /* BUGS
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['hdr'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['mke'])
-        */
-        
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['oai'])
-
-        /*BUG
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['nam'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['hgt'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['wgt'])
-
-        /*BUGS
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['hai'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['off'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['oln'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['ols'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['lic'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['lis'])
- 
+
         //checks queryTitle
         browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.invalidPeriods.output.queryTitle)
- 
+
         //checks the assembledQuery
         browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.invalidPeriods.output.assembledQuery)
     },
 
     "Cancel Wanted: Tests for '.'": browser => {
+        //Verifies error messages for inputs submitted with a '.'
+
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
@@ -530,21 +531,15 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
-        browser.expect.element(selectors.messages.header).text.to.equal(data.invalidPeriods.output.header)
-
         //checks that each error message that is listed in the data has been printed
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['war'])
-
-        /* BUG
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['rfc'])
-        */
-        /* BUG
-        browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['dat'])
-        */
+
     },
 
     'Enter Wanted: Alphabetical Characters Test': browser => {
+        //Inputs alphabetical characters in each field and verifies error messages for the fields that do not accept alphabetical characters.
+        //Verifies inputs are accepted for fields that accept alphabetical characters
 
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
@@ -576,15 +571,11 @@ module.exports = {
         browser.verify.containsText(selectors.messages.errorList, data.alphabeticalCharacters.output.errorList['wgt'])
         browser.verify.containsText(selectors.messages.errorList, data.alphabeticalCharacters.output.errorList['ols'])
         browser.verify.containsText(selectors.messages.errorList, data.alphabeticalCharacters.output.errorList['lis'])
-
-        //checks queryTitle
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.alphabeticalCharacters.output.queryTitle)
-
-        //checks the assembledQuery
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.alphabeticalCharacters.output.assembledQuery)
     },
 
     'Modify Wanted: Alphabetical Characters Test': browser => {
+        //Inputs alphabetical characters in each field and verifies error messages for the fields that do not accept alphabetical characters.
+        //Verifies inputs are accepted for fields that accept alphabetical characters
 
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
@@ -610,24 +601,18 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
-        browser.expect.element(selectors.messages.header).text.to.equal(data.alphabeticalCharacters.output.header)
-
         //checks that each error message that is listed in the data has been printed
         browser.verify.containsText(selectors.messages.errorList, data.alphabeticalCharacters.output.errorList['war'])
         browser.verify.containsText(selectors.messages.errorList, data.alphabeticalCharacters.output.errorList['hgt'])
         browser.verify.containsText(selectors.messages.errorList, data.alphabeticalCharacters.output.errorList['wgt'])
         browser.verify.containsText(selectors.messages.errorList, data.alphabeticalCharacters.output.errorList['ols'])
         browser.verify.containsText(selectors.messages.errorList, data.alphabeticalCharacters.output.errorList['lis'])
-
-        //checks queryTitle
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.alphabeticalCharacters.output.queryTitle)
-
-        //checks the assembledQuery
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.alphabeticalCharacters.output.assembledQuery)
     },
 
     'Cancel Wanted: Alphabetical Characters Test': browser => {
+        //Inputs alphabetical characters in each field and verifies error messages for the fields that do not accept alphabetical characters.
+        //Verifies inputs are accepted for fields that accept alphabetical characters
+
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
@@ -648,13 +633,11 @@ module.exports = {
 
         //checks that each error message that is listed in the data has been printed
         browser.verify.containsText(selectors.messages.errorList, data.alphabeticalCharacters.output.errorList['war'])
-        
-        /* BUG
-        browser.verify.containsText(selectors.messages.errorList, data.alphabeticalCharacters.output.errorList['dat'])
-        */
     },
 
     'Enter Wanted: Special Characters Test': browser => {
+        //Inputs special characters in each field and verifies error messages for the fields that do not accept special characters.
+        //Verifies inputs are accepted for fields that accept special characters
 
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
@@ -685,26 +668,17 @@ module.exports = {
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['hgt'])
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['wgt'])
 
-        /* BUG
+        /* BUG - See GWQ-58
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['hai'])
         */
 
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['ols'])
-
-        /* BUG
-        browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['oln'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['lis'])
-
-        //checks queryTitle
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.alphabeticalCharacters.output.queryTitle)
-
-        //checks the assembledQuery
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.alphabeticalCharacters.output.assembledQuery)
     },
 
     'Modify Wanted: Special Characters Test': browser => {
+        //Inputs special characters in each field and verifies error messages for the fields that do not accept special characters.
+        //Verifies inputs are accepted for fields that accept special characters
 
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
@@ -718,7 +692,7 @@ module.exports = {
         browser.setValue(selectors.war, data.specialCharacters.input.war)
 
         //enters input fields
-        functions.enterFields(selectors.fields, data.alphabeticalCharacters.input, browser)
+        functions.enterFields(selectors.fields, data.specialCharacters.input, browser)
 
         //enters dropdown fields
         browser.click(selectors.dropdowns.sexFemale)
@@ -731,38 +705,25 @@ module.exports = {
         browser.click(selectors.buttons.submit)
 
         //now I'll check that all the expected results are correct
-        browser.expect.element(selectors.messages.header).text.to.equal(data.alphabeticalCharacters.output.header)
+        browser.expect.element(selectors.messages.header).text.to.equal(data.specialCharacters.output.header)
 
         //checks that each error message that is listed in the data has been printed
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['war'])
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['hgt'])
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['wgt'])
-
-        /* BUG
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['oai'])
-        */
 
-        /* BUG
+        /* BUG - See GWQ-58
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['hai'])
-        */
-
+        */ 
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['ols'])
-
-        /* BUG
-        browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['oln'])
-        */
-
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['lis'])
-
-        //checks queryTitle
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.alphabeticalCharacters.output.queryTitle)
-
-        //checks the assembledQuery
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.alphabeticalCharacters.output.assembledQuery)
     },
 
     'Cancel Wanted: Special Characters Test': browser => {
-        
+        //Inputs special characters in each field and verifies error messages for the fields that do not accept special characters.
+        //Verifies inputs are accepted for fields that accept special characters
+
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
@@ -783,13 +744,11 @@ module.exports = {
 
         //checks that each error message that is listed in the data has been printed
         browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList.war)
-
-        /* BUG
-        browser.verify.containsText(selectors.messages.errorList, data.specialCharacters.output.errorList['dat'])
-        */
     },
 
     'Enter Wanted: Numeric Characters Test': browser => {
+        //Inputs numeric characters in each field and verifies error messages for the fields that do not accept numeric characters.
+        //Verifies inputs are accepted for fields that accept numeric characters
 
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
@@ -817,7 +776,11 @@ module.exports = {
 
         //Checks that all expected error messages are displayed
         browser.verify.containsText(selectors.messages.errorList, data.numericalCharacters.output.errorList['mke'])
+
+        /* BUG - See See GWQ-58
         browser.verify.containsText(selectors.messages.errorList, data.numericalCharacters.output.errorList['hai'])
+        */
+
         browser.verify.containsText(selectors.messages.errorList, data.numericalCharacters.output.errorList['ols'])
         browser.verify.containsText(selectors.messages.errorList, data.numericalCharacters.output.errorList['lis'])
 
@@ -829,6 +792,8 @@ module.exports = {
     },
 
     'Modify Wanted: Numerical Characters Test': browser => {
+        //Inputs numeric characters in each field and verifies error messages for the fields that do not accept numeric characters.
+        //Verifies inputs are accepted for fields that accept numeric characters
 
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
@@ -859,7 +824,11 @@ module.exports = {
 
         //Checks that all expected error messages are displayed
         browser.verify.containsText(selectors.messages.errorList, data.numericalCharacters.output.errorList['mke'])
+
+        /* BUG - See See GWQ-58
         browser.verify.containsText(selectors.messages.errorList, data.numericalCharacters.output.errorList['hai'])
+        */
+
         browser.verify.containsText(selectors.messages.errorList, data.numericalCharacters.output.errorList['ols'])
         browser.verify.containsText(selectors.messages.errorList, data.numericalCharacters.output.errorList['lis'])
 
@@ -871,6 +840,8 @@ module.exports = {
     },
 
     'Cancel Wanted: Numerical Characters Test': browser => {
+        //Inputs numeric characters in each field and verifies error messages for the fields that do not accept numeric characters.
+        //Verifies inputs are accepted for fields that accept numeric characters
 
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
