@@ -51,13 +51,5 @@ module.exports = {
                 .clearValue(selectors[key])
                 .setValue(selectors[key], inputs[key])
         })
-    },
-
-    verifyAll: (selectors, inputs, browser) =>
-    {
-        inputs.forEach(input =>
-        {
-
-        })
     }
 }
