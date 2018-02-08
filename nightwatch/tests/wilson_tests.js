@@ -5,6 +5,8 @@ const data = require('../support/data')
 module.exports = {
     beforeEach: browser => {
         browser.url('http://localhost:3000');
+
+        //waits for menu to load.  Raises error if it takes more than 10 seconds
         browser.waitForElementVisible(selectors.buttons.menuButton, 10000)
 
     },
