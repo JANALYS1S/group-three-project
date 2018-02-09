@@ -2,3 +2,4 @@
 selenium-debug.log
 npm-debug.log
 nightwatchProps.js
+package.json

@@ -1,24 +1,30 @@
 module.exports = {
-    
-    goodData: {
+
+    canSubmit: {
         input: {
-            hdr: '123456789',
-            mke: 'MKE',
-            oai: 'CHI1234SI',
-            nam: 'Harry Dresdens',
-            sex: 'M',
-            rac: 'W',
-            hgt: '607',
-            wgt: '200',
-            hai: 'Brown',
-            off: 'Arson',
-            dow: '05022016',
-            oln: '',
-            ols: '',
-            oly: '',
-            lic: '',
-            lis: '',
-            liy: ''
+            fields: {
+                hdr: '123456789',
+                mke: 'MKE',
+                oai: 'CHI1234SI',
+                nam: 'Harry Dresdens',
+                hgt: '607',
+                wgt: '200',
+                hai: 'Brown',
+                off: 'Arson',
+                oln: '',
+                ols: '',
+                lic: '',
+                lis: ''
+            },
+            dropdowns: {
+                sex: 'M',
+                rac: 'W'
+            },
+            dates: {
+                dow: '05022016',
+                old: '07312017',
+                lid: ''
+            }
         },
 
         output: {
@@ -58,6 +64,62 @@ module.exports = {
             queryTitle: 'No results generated due to error.',
             assembledQuery: ''
         }
+    },
+
+    whiteSpace: {
+        input: {
+            fields: {},
+            dropdowns: {
+                sex: 'M',
+                rac: 'W'
+            },
+            dates: {
+                dow: '01012018',
+                old: '01012020',
+                lid: '09012018'
+            }
+        },
+        spaces: ["\uE00D", "\uE00D", "\uE00D", "\uE00D", "\uE00D", "\uE00D", "\uE00D", "\uE00D", "\uE00D"],
+        neededChars: {
+            hdr: 9,
+            mke: 3,
+            oai: 9,
+            nam: 3,
+            hgt: 3,
+            wgt: 3,
+            hai: 3,
+            off: 5,
+            oln: 2,
+            ols: 2,
+            lic: 5,
+            lis: 2
+        },
+        messages: [
+            `The "Header" field must be included.`,
+            `The "MKE" field must be included.`,
+            `The "Originating Agency Identifier" field must be included.`,
+            `The "Originating Agency Identifier" field can only include characters from the English Alphabet or numeric characters.`,
+            `The "Name" field must be included.`,
+            `The "Height" field must be included.`,
+            `The "Height" field can only include numeric characters.`,
+            `The "Height" field needs to have a value greater than 0.`,
+            `The "Weight" field must be included.`,
+            `The "Weight" field can only include numeric characters.`,
+            `The "Weight" field needs to have a value greater than 0.`,
+            `The "Hair" field must be included.`,
+            `The "Offense" field must be included.`,
+            `The "DL State" field can only include a valid State/Territory abbreviation.`,
+            `The "License Plate" field can only include characters from the English Alphabet or numeric characters.`,
+            `The "License State" field can only include a valid State/Territory abbreviation.`
+        ]
+    },
+
+    noData: {
+        input: {
+            fields: {},
+            dropdowns: {},
+            dates: {}
+        }
     }
-    
+
 }
