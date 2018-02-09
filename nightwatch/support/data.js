@@ -395,7 +395,7 @@ module.exports = {
             }
         },
 
-    whiteSpace: {
+    whiteSpaceEW: {
         input: {
             fields: {},
             dropdowns: {
@@ -424,6 +424,55 @@ module.exports = {
             lis: 2
         },
         messages: [
+            `The "Header" field must be included.`,
+            `The "MKE" field must be included.`,
+            `The "Originating Agency Identifier" field must be included.`,
+            `The "Originating Agency Identifier" field can only include characters from the English Alphabet or numeric characters.`,
+            `The "Name" field must be included.`,
+            `The "Height" field must be included.`,
+            `The "Height" field can only include numeric characters.`,
+            `The "Height" field needs to have a value greater than 0.`,
+            `The "Weight" field must be included.`,
+            `The "Weight" field can only include numeric characters.`,
+            `The "Weight" field needs to have a value greater than 0.`,
+            `The "Hair" field must be included.`,
+            `The "Offense" field must be included.`,
+            `The "DL State" field can only include a valid State/Territory abbreviation.`,
+            `The "License Plate" field can only include characters from the English Alphabet or numeric characters.`,
+            `The "License State" field can only include a valid State/Territory abbreviation.`
+        ]
+    },
+
+    whiteSpaceMW: {
+        input: {
+            fields: {},
+            dropdowns: {
+                sex: '',
+                rac: ''
+            },
+            dates: {
+                old: '01012020',
+                lid: '09012018'
+            }
+        },
+        spaces: ["\uE00D", "\uE00D", "\uE00D", "\uE00D", "\uE00D", "\uE00D", "\uE00D", "\uE00D", "\uE00D"],
+        neededChars: {
+            hdr: 9,
+            mke: 3,
+            oai: 9,
+            nam: 3,
+            hgt: 3,
+            wgt: 3,
+            hai: 3,
+            off: 5,
+            oln: 2,
+            ols: 2,
+            lic: 5,
+            lis: 2
+        },
+        messages: [
+            `The "Warrant ID" field must be included.`,
+            `The "Warrant ID" field can only include numeric characters.`,
             `The "Header" field must be included.`,
             `The "MKE" field must be included.`,
             `The "Originating Agency Identifier" field must be included.`,

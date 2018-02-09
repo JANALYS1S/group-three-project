@@ -7,21 +7,36 @@ module.exports = {
         browser.url('http://localhost:3000')
     },
 
-    after: browser => {
-        browser.end()
-    },
+    // after: browser => {
+    //     browser.end()
+    // },
 
     'Enter Wanted - Fields cannot contain only white space characters': browser => {
-        functions.loadEnterWanted(browser)
-        functions.enterData(data.whiteSpace.input, browser)
-        let spaceKeys = Object.getOwnPropertyNames(data.whiteSpace.neededChars)
+        functions.loadChosenWanted(selectors.buttons.enterW, browser)
+        functions.enterData(data.whiteSpaceEW.input, browser)
+        let spaceKeys = Object.getOwnPropertyNames(data.whiteSpaceEW.neededChars)
         spaceKeys.forEach(key => {
-            let howManySpaces = data.whiteSpace.spaces.slice(0, data.whiteSpace.neededChars[key])
+            let howManySpaces = data.whiteSpaceEW.spaces.slice(0, data.whiteSpaceEW.neededChars[key])
             browser.clearValue(selectors.fields[key])
                 .setValue(selectors.fields[key], howManySpaces)
         })
         browser.click(selectors.buttons.submit)
-        functions.checkList(selectors.messages.errorList, data.whiteSpace.messages, browser)
+        functions.checkList(selectors.messages.errorList, data.whiteSpaceEW.messages, browser)
+    },
+
+    'Modify Wanted - Fields cannot contain only white space characters': browser => {
+        functions.loadChosenWanted(selectors.buttons.modifyW, browser)
+        functions.enterData(data.whiteSpaceMW.input, browser)
+        browser.clearValue(selectors.war)
+            .setValue(selectors.war, '          ')
+        let spaceKeys = Object.getOwnPropertyNames(data.whiteSpaceMW.neededChars)
+        spaceKeys.forEach(key => {
+            let howManySpaces = data.whiteSpaceMW.spaces.slice(0, data.whiteSpaceMW.neededChars[key])
+            browser.clearValue(selectors.fields[key])
+                .setValue(selectors.fields[key], howManySpaces)
+        })
+        browser.click(selectors.buttons.submit)
+        functions.checkList(selectors.messages.errorList, data.whiteSpaceMW.messages, browser)
     }
 
     /*
