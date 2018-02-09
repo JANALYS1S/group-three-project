@@ -34,7 +34,7 @@ module.exports = {
             .click(selectors.buttons.menuButton)
             .waitForElementVisible(selectors.buttons.modifyW, 3000)
             .click(selectors.buttons.modifyW)
-            .setValue(selectors.fields.war, data.modifyWanted.warrantID)
+            .setValue(selectors.war, data.modifyWanted.warrantID)
             .click(selectors.calendars.dow)
             .setValue(selectors.calendars.dow, data.goodData.input2.dow)
             .setValue(selectors.calendars.lid, data.goodData.input2.lid)
@@ -50,19 +50,13 @@ module.exports = {
             .pause(5000)
             .click(selectors.buttons.cancelW)
             .pause(3000)
-            .setValue(selectors.fields.war, data.modifyWanted.warrantID)
-            .click(selectors.fields.rfC)
-            .setValue(selectors.fields.rfC, data.goodData.input2.nam)
+            .setValue(selectors.war, data.modifyWanted.warrantID)
+            .click(selectors.rfc)
+            .setValue(selectors.rfc, data.goodData.input2.nam)
             .click(selectors.calendars.dateoC)
             .setValue(selectors.calendars.dateoC, data.goodData.input2.dateOC)
             .click(selectors.buttons.submit)
     },
-
-
-
-
-
-
 
 
 
@@ -91,9 +85,9 @@ module.exports = {
             .click(selectors.buttons.menuButton)
             .waitForElementVisible(selectors.buttons.modifyW, 3000)
             .click(selectors.buttons.modifyW)
-            .waitForElementVisible(selectors.fields.war, 3000)
-            .click(selectors.fields.war)
-            .setValue(selectors.fields.war, data.goodData.input2)
+            .waitForElementVisible(selectors.war, 3000)
+            .click(selectors.war)
+            .setValue(selectors.war, data.goodData.input2)
             .click(selectors.calendars.dow)
             .setValue(selectors.calendars.dow, data.breakingYear.dOW)
             .waitForElementVisible(selectors.calendars.lid, 3000)
@@ -123,110 +117,6 @@ module.exports = {
             .pause(10000)
         browser.verify.containsText(selectors.messages.errorList, data.cancelWanted.dOCError)
 
-
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //   'I can put in information and get a good text message as a result': browser => {
-    //       functions.enterFields(selectors.fields, data.goodData.input, browser)
-    //       browser
-    //           I've set all the fields, time to submit
-    //           .click(selectors.buttons.submit)
-    //           .pause(100)
-    //       now I'll check that all the expected results are correct
-    //       browser.expect.element(selectors.messages.header).text.to.equal(data.goodData.output.header)
-    //       browser.expect.element(selectors.messages.errorList).text.to.equal('')
-    //       browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.goodData.output.queryTitle)
-    //       browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.goodData.output.assembledQuery)
-    //   },
-
-    //   'If I put in good data, but only one of a set of optional fields, I get an error': browser => {
-    //       functions.enterFields(selectors.fields, data.badData.input, browser)
-    //       browser
-    //           I've set all the fields, time to submit
-    //           .click(selectors.buttons.submit)
-    //           .pause(100)
-    //       now I'll check that all the expected results are correct
-    //       browser.expect.element(selectors.messages.header).text.to.equal(data.badData.output.header)
-    //       this transaction only has one error message to check, so I don't need to repeat the check
-    //       functions.enterLists(selectors.messages.errorList, data.badData.output.errorList, browser)
-    //       browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.badData.output.queryTitle)
-    //       browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.badData.output.assembledQuery)
-    //   },
-
-    //   'If I put in data that is shorter than the minimum requirements, I get an error for each field effected.': browser => {
-    //       functions.enterFields(selectors.fields, data.badData2.input, browser)
-    //       browser
-    //           I've set all the fields, time to submit
-    //           .click(selectors.buttons.submit)
-    //           .pause(100)
-    //       now I'll check that all the expected results are correct
-    //       browser.expect.element(selectors.messages.header).text.to.equal(data.badData2.output.header)
-    //       checks that each error message that is listed in the data has been printed
-    //       functions.enterLists(selectors.messages.errorList, data.badData2.output.errorList, browser)
-    //       browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.badData2.output.queryTitle)
-    //       browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.badData2.output.assembledQuery)
-    //   },
-
-    //   'If I put in data that is longer than the maximum allowed, I get an error for each field effected.': browser => {
-    //       functions.enterFields(selectors.fields, data.badData3.input, browser)
-    //       browser
-    //           I've set all the fields, time to submit
-    //           .click(selectors.buttons.submit)
-    //           .pause(100)
-    //       now I'll check that all the expected results are correct
-    //       browser.expect.element(selectors.messages.header).text.to.equal(data.badData3.output.header)
-    //       checks that each error message that is listed in the data has been printed
-    //       functions.enterLists(selectors.messages.errorList, data.badData3.output.errorList, browser)
-    //       browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.badData3.output.queryTitle)
-    //       browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.badData3.output.assembledQuery)
-    //   }
 
 }
