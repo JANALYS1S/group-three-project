@@ -1,7 +1,7 @@
 module.exports = {
     
     fields: {
-        war: 'input[name="widInput"]',
+        //input fields for 'Enter Wanted' in order as shown
         hdr: 'input[name="hdrInput"]',
         mke: 'input[name="mkeInput"]',
         oai: 'input[name="oriInput"]',
@@ -17,11 +17,27 @@ module.exports = {
         rfC: 'input[name="resInput"]',
     },
 
+        
+    //'Warrant ID' field selector for 'Modify Wanted' and 'Cancel Wanted'
+    war: 'input[name="widInput"]',
+
+    //'Reason for Cancellation' field selector for 'Cancel Wanted'
+    rfc: 'input[name="resInput"]',
+
     calendars: {
+        //'Date of Warrant/Violation'
         dow: 'input[name="dowInput"]',
+
+        //'DL Expiration Date'
         old: 'input[name="oldInput"]',
         lid: 'input[name="lidInput"]',
-        dateoC: 'input[name="datInput"]'
+        dateoC: 'input[name="datInput"]',
+
+        //'License Expiration Date'
+        lid: 'input[name="lidInput"]',
+
+        //'Date of Cancellation' form for 'Cancel Wanted'
+        dat: 'input[name="datInput"]'
     },
 
     dropdowns: {
