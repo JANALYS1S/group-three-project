@@ -14,7 +14,6 @@ module.exports = {
         ols: 'input[name="olsInput"]',
         lic: 'input[name="licInput"]',
         lis: 'input[name="lisInput"]',
-        rfC: 'input[name="resInput"]',
     },
 
         
