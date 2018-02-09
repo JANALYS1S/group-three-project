@@ -21,7 +21,7 @@ module.exports = {
                 .setValue(selectors.fields[key], howManySpaces)
         })
         browser.click(selectors.buttons.submit)
-        functions.checkLists(selectors.messages.errorList, data.whiteSpace.messages, browser)
+        functions.checkList(selectors.messages.errorList, data.whiteSpace.messages, browser)
     }
 
     /*
