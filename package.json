@@ -1,0 +1,21 @@
+{
+  "name": "group-three-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "nightwatch.conf.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mine": "nightwatch nightwatch/tests/tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jauranna/group-three-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jauranna/group-three-project/issues"
+  },
+  "homepage": "https://github.com/Jauranna/group-three-project#readme"
+}
