@@ -31,13 +31,14 @@ module.exports = {
             wgt: '123',
             hai: 'red',
             off: '12345',
-            dow: '02102018',
+            dow: '02092018',
             oln: 'a',
             ols: 'UT',
             oly: '02062018',
             lic: '12345',
             lis: 'UT',
-            liy: '02062018'
+            liy: '02062018',
+            dateOC: '02112018'
         },
         
 
@@ -51,6 +52,7 @@ module.exports = {
 
     badData: { //the 'key' for the fields should match the key of the selectors in css_selectors 
         input: {
+            war: '1234567890',
             hdr: '123456789',
             mke: 'MKE',
             oai: 'CHI1234SI',
@@ -84,5 +86,15 @@ module.exports = {
         lED: '1234567890112345', //oly
         dlED: '123456789012345', //liy
     },
-
+    cancelWanted: {
+        reasonC: 'asdfgh',
+        dOC: '123456789012345', //Date of Cancellation
+        dOCError: 'The "Date of Cancellation" field should be 10 characters long.',
+        temporaryE: 'At least one optional field needs to be included.'
+       
+    },
+    modifyWanted: {
+        warrantID: '1234567890',
+        dCError: 'The "Date of Cancellation" field should be 10 characters long.',
+    }
 }
