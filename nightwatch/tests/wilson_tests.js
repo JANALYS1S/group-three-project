@@ -5,7 +5,9 @@ const data = require('../support/data')
 module.exports = {
     beforeEach: browser => {
         browser.url('http://localhost:3000');
-        browser.waitForElementVisible(selectors.buttons.menuButton, 60000)
+
+        //waits for menu to load.  Raises error if it takes more than 10 seconds
+        browser.waitForElementVisible(selectors.buttons.menuButton, 10000)
 
     },
 
@@ -20,9 +22,11 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
         browser.click(selectors.buttons.enterW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
         //enters input fields
@@ -40,7 +44,7 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.justLongEnough.output.header)
         browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.justLongEnough.output.queryTitle)
     },
@@ -53,8 +57,10 @@ module.exports = {
         browser.click(selectors.buttons.menuButton)
 
         //waits for the menu options to appear, and then clicks 'Modify Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 60000)
+        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
         browser.click(selectors.buttons.modifyW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
         //sets warrant id field
@@ -75,7 +81,7 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.justLongEnough.output.header)
         browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.justLongEnough.output.queryTitle)
     },
@@ -87,20 +93,24 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
         browser.click(selectors.buttons.cancelW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
-        //enter values
+        //enter input fields
         functions.enterValue(selectors.war, data.justLongEnough.input.war, browser)
         functions.enterValue(selectors.rfc, data.justLongEnough.input.rfc, browser)
+        
+        //sets calendar field
         browser.setValue(selectors.calendars.dat, data.justLongEnough.input.dat)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        // now I'll check that all the expected results are correct 
+        // verifies that expected results are correct the expected results are correct 
         /* BUG - See GWQ-66
         browser.expect.element(selectors.messages.header).text.to.equal(data.justLongEnough.output.header)
         */
@@ -110,12 +120,14 @@ module.exports = {
         //Checks if inputs are accepted at its maximum allowed length.
         //Does not check for calendar inputs or the assembled query.
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
+        //waits for the menu button to appear, and then clicks on it
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
         browser.click(selectors.buttons.enterW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
         //enters input fields
@@ -133,7 +145,7 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.almostTooLong.output.header)
         browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.almostTooLong.output.queryTitle)
     },
@@ -146,11 +158,13 @@ module.exports = {
         browser.click(selectors.buttons.menuButton)
 
         //waits for the menu options to appear, and then clicks 'Modify Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 60000)
+        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
         browser.click(selectors.buttons.modifyW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
-        //sets warrant id field
+        //enters warrant id field
         functions.enterValue(selectors.war, data.almostTooLong.input.war, browser)
 
         //enters input fields
@@ -160,7 +174,7 @@ module.exports = {
         browser.click(selectors.dropdowns.sexFemale)
         browser.click(selectors.dropdowns.raceAsian)
 
-        //enters calendar fields
+        //sets calendar fields
         browser.setValue(selectors.calendars.dow, data.almostTooLong.input.dow)
         browser.setValue(selectors.calendars.old, data.almostTooLong.input.old)
         browser.setValue(selectors.calendars.lid, data.almostTooLong.input.lid)
@@ -168,7 +182,7 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.almostTooLong.output.header)
         browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.almostTooLong.output.queryTitle)
     },
@@ -180,20 +194,24 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
         browser.click(selectors.buttons.cancelW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
         //enter values
         functions.enterValue(selectors.war, data.almostTooLong.input.war, browser)
         functions.enterValue(selectors.rfc, data.almostTooLong.input.rfc, browser)
+        
+        //sets calendar field
         browser.setValue(selectors.calendars.dat, data.almostTooLong.input.dat)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        // now I'll check that all the expected results are correct
+        //now I'll check that all the expected results are correct
         /* BUG - See GWQ-66
         browser.expect.element(selectors.messages.header).text.to.equal(data.almostTooLong.output.header)
         */
@@ -206,9 +224,11 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
         browser.click(selectors.buttons.enterW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
         //enters input fields
@@ -236,12 +256,14 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
         browser.click(selectors.buttons.modifyW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
-        //sets warrantID field
+        //sets 'warrantID' field
         browser.setValue(selectors.war, data.tooShort.input.war)
 
         //enters input fields
@@ -270,15 +292,16 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
         browser.click(selectors.buttons.cancelW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
         //enter values
         functions.enterValue(selectors.war, data.tooShort.input.war, browser)
         functions.enterValue(selectors.rfc, data.tooShort.input.rfc, browser)
-        browser.setValue(selectors.calendars.dat, data.tooShort.input.dat)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -295,9 +318,11 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
         browser.click(selectors.buttons.enterW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
         //enters input fields
@@ -327,12 +352,14 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
         browser.click(selectors.buttons.modifyW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
-        //sets warrantID field
+        //sets 'warrantID' field
         functions.enterValue(selectors.war, data.tooLong.input.war, browser)
 
         //enters input fields
@@ -364,18 +391,20 @@ module.exports = {
         browser.click(selectors.buttons.menuButton)
 
         //waits for the menu options to appear, and then clicks 'Cancel Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 60000)
+        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
         browser.click(selectors.buttons.cancelW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
+        //enters input fields
         functions.enterValue(selectors.war, data.tooLong.input.war, browser)
         functions.enterValue(selectors.rfc, data.tooLong.input.rfc, browser)
-        browser.setValue(selectors.calendars.dat, data.tooLong.input.dat)
 
         //clicks submits
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.tooLong.output.header)
 
         //checks that each error message that is listed in the data has been printed
@@ -389,13 +418,12 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
         browser.click(selectors.buttons.modifyW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
 
         //enters input fields
         functions.enterFields(selectors.fields, data.invalidPeriods.input, browser)
@@ -403,7 +431,7 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.invalidPeriods.output.header)
 
         //checks that each error message that is listed in the data has been printed
@@ -427,12 +455,14 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
         browser.click(selectors.buttons.modifyW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
-        //sets warrantID field
+        //sets 'warrantID' field
         browser.setValue(selectors.war, data.invalidPeriods.input.war)
 
         //enters input fields
@@ -441,7 +471,7 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.invalidPeriods.output.header)
 
         //checks that each error message that is listed in the data has been printed
@@ -473,13 +503,15 @@ module.exports = {
         browser.click(selectors.buttons.menuButton)
 
         //waits for the menu options to appear, and then clicks 'Cancel Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 60000)
+        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
         browser.click(selectors.buttons.cancelW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
+        //enters input fields
         functions.enterValue(selectors.war, data.invalidPeriods.input.war, browser)
         functions.enterValue(selectors.rfc, data.invalidPeriods.input.rfc, browser)
-        browser.setValue(selectors.calendars.dat, data.invalidPeriods.input.dat)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -497,9 +529,11 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
         browser.click(selectors.buttons.enterW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
         //enters input fields
@@ -508,7 +542,7 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.alphabeticalCharacters.output.header)
 
         //checks that each error message that is listed in the data has been printed
@@ -525,12 +559,14 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
         browser.click(selectors.buttons.modifyW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
-        //sets warrantID field
+        //sets 'warrantID' field
         browser.setValue(selectors.war, data.alphabeticalCharacters.input.war)
 
         //enters input fields
@@ -539,9 +575,6 @@ module.exports = {
         //enters dropdown fields
         browser.click(selectors.dropdowns.sexFemale)
         browser.click(selectors.dropdowns.raceAsian)
-
-        //enters calendar fields
-        browser.setValue(selectors.calendars.dow, data.goodData.input.dow)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
@@ -562,18 +595,20 @@ module.exports = {
         browser.click(selectors.buttons.menuButton)
 
         //waits for the menu options to appear, and then clicks 'Cancel Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 60000)
+        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
         browser.click(selectors.buttons.cancelW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
+        //enters input fields
         functions.enterValue(selectors.war, data.alphabeticalCharacters.input.war, browser)
         functions.enterValue(selectors.rfc, data.alphabeticalCharacters.input.rfc, browser)
-        browser.setValue(selectors.calendars.dat, data.alphabeticalCharacters.input.dat)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.alphabeticalCharacters.output.header)
 
         //checks that each error message that is listed in the data has been printed
@@ -587,9 +622,11 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
         browser.click(selectors.buttons.enterW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
         //enters input fields
@@ -598,7 +635,7 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.specialCharacters.output.header)
 
         //checks that each error message that is listed in the data has been printed
@@ -621,12 +658,14 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
         browser.click(selectors.buttons.modifyW)
+
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
-        //sets warrantID field
+        //sets 'warrantID' field
         browser.setValue(selectors.war, data.specialCharacters.input.war)
 
         //enters input fields
@@ -635,7 +674,7 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.specialCharacters.output.header)
 
         //checks that each error message that is listed in the data has been printed
@@ -659,18 +698,20 @@ module.exports = {
         browser.click(selectors.buttons.menuButton)
 
         //waits for the menu options to appear, and then clicks 'Cancel Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 60000)
+        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
         browser.click(selectors.buttons.cancelW)
+
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
+        //enters input fields
         functions.enterValue(selectors.war, data.specialCharacters.input.war, browser)
         functions.enterValue(selectors.rfc, data.specialCharacters.input.rfc, browser)
-        browser.setValue(selectors.calendars.dat, data.specialCharacters.input.dat)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.tooShort.output.header)
 
         //checks that each error message that is listed in the data has been printed
@@ -684,9 +725,11 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
         browser.click(selectors.buttons.enterW)
+
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
         //enters input fields
@@ -695,7 +738,7 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.numericalCharacters.output.header)
 
         //Checks that all expected error messages are displayed
@@ -722,12 +765,14 @@ module.exports = {
         //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
         browser.click(selectors.buttons.menuButton)
 
-        //waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 60000)
+        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
+        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
         browser.click(selectors.buttons.modifyW)
+        
+        //prevents browser crashing due to rapid opening and closing of browser
         browser.pause(3000)
 
-        //sets warrantID field
+        //sets 'warrantID' field
         browser.setValue(selectors.war, data.numericalCharacters.input.war)
 
         //enters input fields
@@ -736,7 +781,7 @@ module.exports = {
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.numericalCharacters.output.header)
 
         //Checks that all expected error messages are displayed
@@ -764,17 +809,17 @@ module.exports = {
         browser.click(selectors.buttons.menuButton)
 
         //waits for the menu options to appear, and then clicks 'Cancel Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 60000)
+        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
         browser.click(selectors.buttons.cancelW)
 
+        //enters input fields
         functions.enterValue(selectors.war, data.numericalCharacters.input.war, browser)
         functions.enterValue(selectors.rfc, data.numericalCharacters.input.rfc, browser)
-        browser.setValue(selectors.calendars.dat, data.numericalCharacters.input.dat)
 
         //clicks submit
         browser.click(selectors.buttons.submit)
 
-        //now I'll check that all the expected results are correct
+        //verifies that expected results are correct
         browser.expect.element(selectors.messages.header).text.to.equal(data.numericalCharacters.output.header)
     }
 }
