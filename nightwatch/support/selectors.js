@@ -14,6 +14,7 @@ module.exports = {
         ols: 'input[name="olsInput"]',
         lic: 'input[name="licInput"]',
         lis: 'input[name="lisInput"]',
+        rfC: 'input[name="resInput"]',
     },
 
         
@@ -29,6 +30,8 @@ module.exports = {
 
         //'DL Expiration Date'
         old: 'input[name="oldInput"]',
+        lid: 'input[name="lidInput"]',
+        dateoC: 'input[name="datInput"]',
 
         //'License Expiration Date'
         lid: 'input[name="lidInput"]',
@@ -73,6 +76,7 @@ module.exports = {
         queryTitle: 'span[name="queryTitle"]',
         assembledQuery: 'span[name="queryBody"]',
         expectedError: 'ul[name="errorList"]',
-        breakingYearError: 'ul[id="errorList"]',
+        errorList: 'ul[id="errorList"]',
+        
     }
 }
