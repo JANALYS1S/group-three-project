@@ -3,7 +3,6 @@ const functions = require('../support/functions')
 const data = require('../support/data')
 
 module.exports = {
-	/*
     beforeEach: browser => {
         browser.url('http://localhost:3000')
     },
@@ -12,6 +11,20 @@ module.exports = {
         browser.end()
     },
 
+    'Enter Wanted - Fields cannot contain only white space characters': browser => {
+        functions.loadEnterWanted(browser)
+        functions.enterData(data.whiteSpace.input, browser)
+        let spaceKeys = Object.getOwnPropertyNames(data.whiteSpace.neededChars)
+        spaceKeys.forEach(key => {
+            let howManySpaces = data.whiteSpace.spaces.slice(0, data.whiteSpace.neededChars[key])
+            browser.clearValue(selectors.fields[key])
+                .setValue(selectors.fields[key], howManySpaces)
+        })
+        browser.click(selectors.buttons.submit)
+        functions.checkLists(selectors.messages.errorList, data.whiteSpace.messages, browser)
+    }
+
+    /*
     'I can put in information and get a good text message as a result': browser => {
         functions.enterFields(selectors.fields, data.goodData.input, browser)
         browser
