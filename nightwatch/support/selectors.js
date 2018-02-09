@@ -1,7 +1,7 @@
 module.exports = {
     
     fields: {
-        war: 'input[class ="inputField"]',
+        war: 'input[name="widInput"]',
         hdr: 'input[name="hdrInput"]',
         mke: 'input[name="mkeInput"]',
         oai: 'input[name="oriInput"]',
@@ -14,12 +14,14 @@ module.exports = {
         ols: 'input[name="olsInput"]',
         lic: 'input[name="licInput"]',
         lis: 'input[name="lisInput"]',
+        rfC: 'input[name="resInput"]',
     },
 
     calendars: {
         dow: 'input[name="dowInput"]',
         old: 'input[name="oldInput"]',
-        lid: 'input[name="lidInput"]'
+        lid: 'input[name="lidInput"]',
+        dateoC: 'input[name="datInput"]'
     },
 
     dropdowns: {
@@ -58,6 +60,7 @@ module.exports = {
         queryTitle: 'span[name="queryTitle"]',
         assembledQuery: 'span[name="queryBody"]',
         expectedError: 'ul[name="errorList"]',
-        breakingYearError: 'ul[id="errorList"]',
+        errorList: 'ul[id="errorList"]',
+        
     }
 }
