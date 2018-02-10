@@ -60,7 +60,7 @@ module.exports = {
      */
     loadEnterWanted: (browser) => {
         browser.click(selectors.buttons.menuButton)
-            .waitForElementVisible(selectors.buttons.enterW, 60000)
+            .waitForElementVisible(selectors.buttons.enterW, 10000)
             .click(selectors.buttons.enterW)
             .pause(500)
     },
