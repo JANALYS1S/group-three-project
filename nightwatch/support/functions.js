@@ -54,14 +54,19 @@ module.exports = {
     },
 
     /**
-     * Coded by doctorwong:
+     * Based on code by doctorwong:
      * waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
      * waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
      */
-    loadEnterWanted: (browser) => {
+    loadChosenWanted: (button, browser) => {
         browser.click(selectors.buttons.menuButton)
+<<<<<<< HEAD
             .waitForElementVisible(selectors.buttons.enterW, 10000)
             .click(selectors.buttons.enterW)
+=======
+            .waitForElementVisible(button, 6000)
+            .click(button)
+>>>>>>> 5531cdf23dd52f39d3071d4f2e9a2979ffc2d4f8
             .pause(500)
     },
 
@@ -96,9 +101,8 @@ module.exports = {
                 .verify.value(selectors.calendars[key], reformatDate)
         })
         //Sets values for dropdown menus, based on the object from the data file.
-        //Use a blank object for menus you want untouched.
-        browser.click(`select[name = "sexInput"] option[value="${inputs.dropdowns.sex}"]`)
-        browser.click(`select[name = "racInput"] option[value="${inputs.dropdowns.rac}"]`)
+        if (inputs.dropdowns.sex !== '') {browser.click(`select[name = "sexInput"] option[value="${inputs.dropdowns.sex}"]`)}
+        if (inputs.dropdowns.rac !== '') {browser.click(`select[name = "racInput"] option[value="${inputs.dropdowns.rac}"]`)}
     },
 
     /**
