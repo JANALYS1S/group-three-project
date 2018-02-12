@@ -20,7 +20,7 @@ module.exports = {
             .setValue(selectors.fields.hdr, data.goodData.input2.hdr)
             .click(selectors.calendars.dow)
             .setValue(selectors.calendars.dow, data.goodData.input2.dow)
-            .pause(2000)
+            //  .pause(2000)
             .setValue(selectors.calendars.lid, data.goodData.input2.lid)
             .pause(2000)
             .click(selectors.calendars.old)
@@ -47,12 +47,11 @@ module.exports = {
             .waitForElementVisible(selectors.buttons.menuButton, 10000)
             .click(selectors.buttons.menuButton)
             .waitForElementVisible(selectors.buttons.cancelW, 10000)
-            .pause(5000)
             .click(selectors.buttons.cancelW)
-            .pause(3000)
+            .waitForElementVisible(selectors.war, 10000)
             .setValue(selectors.war, data.modifyWanted.warrantID)
-            .click(selectors.fields.rfC)
-            .setValue(selectors.fields.rfC, data.goodData.input2.nam)
+            .click(selectors.rfc)
+            .setValue(selectors.rfc, data.goodData.input2.nam)
             .click(selectors.calendars.dateoC)
             .setValue(selectors.calendars.dateoC, data.goodData.input2.dateOC)
             .click(selectors.buttons.submit)
@@ -78,7 +77,7 @@ module.exports = {
             .click(selectors.calendars.old)
             .setValue(selectors.calendars.old, data.breakingYear.lED)
             .click(selectors.buttons.submit)
-        },
+    },
     'Breaking Year Fields Modify Wanted': browser => { //should fail in second version 
         browser
             .waitForElementVisible(selectors.buttons.menuButton, 10000)
@@ -96,7 +95,7 @@ module.exports = {
             .click(selectors.calendars.old)
             .setValue(selectors.calendars.old, data.breakingYear.lED)
             .click(selectors.buttons.submit)
-       //     browser.verify.containsText(selectors.messages.errorList, data.breakingYear.dOC)
+        //     browser.verify.containsText(selectors.messages.errorList, data.breakingYear.dOC)
     },
     'Breaking Year Fields Cancel Wanted': browser => {
         browser
@@ -114,59 +113,59 @@ module.exports = {
             .getText(selectors.messages.errorList, text => {
                 console.log(`Found text ${text.value}, input: ${data.cancelWanted.reasonC}`)
             })
-            .pause(10000)
+            .pause(100)
         browser.verify.containsText(selectors.messages.errorList, data.cancelWanted.dOCError)
 
 
 
-   },
-    'Number of days in a month': browser =>{
+    },
+    'Number of days in a month': browser => {
         browser
-        //starting with enter wanted 
-        .waitForElementVisible(selectors.buttons.menuButton, 10000)
-        .click(selectors.buttons.menuButton)
-        .waitForElementVisible(selectors.buttons.enterW, 1000)
-        .click(selectors.buttons.enterW)
-        .waitForElementVisible(selectors.buttons.clear, 10000)
-        .click(selectors.fields.hdr)
-        .setValue(selectors.fields.hdr, data.goodData.input)
-        .click(selectors.calendars.dow)
-        .setValue(selectors.calendars.dow, data.numberOfDaysInMonth.dateWarViol)
-        .click(selectors.calendars.old)
-        .setValue(selectors.calendars.old, data.numberOfDaysInMonth.dLExpirationDate)
-        .click(selectors.calendars.lid)
-        .setValue(selectors.calendars.lid, data.numberOfDaysInMonth.licenseExpirationDate)
-        .click(selectors.buttons.submit)
-        .expect.element(selectors.messages.queryTitle).to.be.visible
+            //starting with enter wanted 
+            .waitForElementVisible(selectors.buttons.menuButton, 10000)
+            .click(selectors.buttons.menuButton)
+            .waitForElementVisible(selectors.buttons.enterW, 1000)
+            .click(selectors.buttons.enterW)
+            .waitForElementVisible(selectors.buttons.clear, 10000)
+            .click(selectors.fields.hdr)
+            .setValue(selectors.fields.hdr, data.goodData.input)
+            .click(selectors.calendars.dow)
+            .setValue(selectors.calendars.dow, data.numberOfDaysInMonth.dateWarViol)
+            .click(selectors.calendars.old)
+            .setValue(selectors.calendars.old, data.numberOfDaysInMonth.dLExpirationDate)
+            .click(selectors.calendars.lid)
+            .setValue(selectors.calendars.lid, data.numberOfDaysInMonth.licenseExpirationDate)
+            .click(selectors.buttons.submit)
+            .expect.element(selectors.messages.queryTitle).to.be.visible
         browser
-        //testing modify wanted
-        .click(selectors.buttons.menuButton)
-        .waitForElementVisible(selectors.buttons.modifyW, 10000)
-        .click(selectors.buttons.modifyW)
-        .waitForElementVisible(selectors.war, 10000) 
-        .setValue(selectors.war, data.goodData.input)
-        .click(selectors.calendars.dow)
-        .setValue(selectors.calendars.dow, data.numberOfDaysInMonth.dateWarViol)
-        .click(selectors.calendars.old)
-        .setValue(selectors.calendars.old, data.numberOfDaysInMonth.dLExpirationDate)
-        .click(selectors.calendars.lid)
-        .setValue(selectors.calendars.lid, data.numberOfDaysInMonth.licenseExpirationDate)
-        .click(selectors.buttons.submit)
-        .expect.element(selectors.messages.queryTitle).to.be.visible
+            //testing modify wanted
+            .click(selectors.buttons.menuButton)
+            .waitForElementVisible(selectors.buttons.modifyW, 10000)
+            .click(selectors.buttons.modifyW)
+            .waitForElementVisible(selectors.war, 10000)
+            .setValue(selectors.war, data.goodData.input)
+            .click(selectors.calendars.dow)
+            .setValue(selectors.calendars.dow, data.numberOfDaysInMonth.dateWarViol)
+            .click(selectors.calendars.old)
+            .setValue(selectors.calendars.old, data.numberOfDaysInMonth.dLExpirationDate)
+            .click(selectors.calendars.lid)
+            .setValue(selectors.calendars.lid, data.numberOfDaysInMonth.licenseExpirationDate)
+            .click(selectors.buttons.submit)
+            .expect.element(selectors.messages.queryTitle).to.be.visible
         browser
-        //testing cancel wanted
-        .click(selectors.buttons.menuButton)
-        .waitForElementVisible(selectors.buttons.modifyW, 10000)
-        .click(selectors.buttons.cancelW)
-        .waitForElementVisible(selectors.calendars.dateoC, 1000)
-        .click(selectors.war)
-        .setValue(selectors.war, data.goodData.input)
-        .click(selectors.calendars.dateoC)
-        .setValue(selectors.calendars.dateoC, data.numberOfDaysInMonth.dateofCancellation)
-        .click(selectors.buttons.submit)
-        .expect.element(selectors.messages.queryTitle).to.be.visible
-       
-    
+            //testing cancel wanted
+            .click(selectors.buttons.menuButton)
+            .waitForElementVisible(selectors.buttons.modifyW, 10000)
+            .click(selectors.buttons.cancelW)
+            .waitForElementVisible(selectors.calendars.dateoC, 1000)
+            .click(selectors.war)
+            .setValue(selectors.war, data.goodData.input)
+            .click(selectors.calendars.dateoC)
+            .setValue(selectors.calendars.dateoC, data.numberOfDaysInMonth.dateofCancellation)
+            .click(selectors.buttons.submit)
+            .expect.element(selectors.messages.queryTitle).to.be.visible
+
+
     },
 
 
