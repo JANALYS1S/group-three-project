@@ -177,8 +177,6 @@ module.exports = {
                     rfc: 'The "Reason for Cancellation" field should be between 10 and 150 characters long.',
                     doc: 'The "Date of Cancellation" field can include dates after 1900.',
                 },
-                assembledQuery: '',
-
             }
         },
 

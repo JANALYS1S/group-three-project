@@ -59,10 +59,12 @@ module.exports = {
      * waits for the menu options to appear, and then clicks 'enterWanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
      */
     loadChosenWanted: (button, browser) => {
-        browser.click(selectors.buttons.menuButton)
+            browser.waitForElementVisible(selectors.buttons.menuButton, 10000)
+            .click(selectors.buttons.menuButton)
             .waitForElementVisible(button, 6000)
             .click(button)
-            .pause(500)
+            //edited to work on slow computers =)
+            .pause(1000)
     },
 
     /**
