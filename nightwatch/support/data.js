@@ -492,6 +492,36 @@ module.exports = {
         ]
     },
 
+    jDefaultData: {
+        input: {
+            fields: {
+                hdr: 'abc123!@#',
+                mke: '#Ab',
+                oai: '12345abcd',
+                nam: 'John Smith 2!',
+                hgt: '601',
+                wgt: '200',
+                hai: 'Brown',
+                off: 'Jaywalking <3',
+                oln: '123abc@%',
+                ols: 'UT',
+                lic: '123ABC',
+                lis: 'OK',
+            },
+            dropdowns: {
+                sex: 'M',
+                rac: 'W'
+            },
+            dates: {
+                dow: '01012018',
+                old: '01012020',
+                lid: '09012018'
+            }
+        },
+
+
+    },
+
     noData: {
         input: {
             fields: {},
