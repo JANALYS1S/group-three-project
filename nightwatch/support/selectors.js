@@ -1,5 +1,5 @@
 module.exports = {
-    
+
     fields: {
         //input fields for 'Enter Wanted' in order as shown
         hdr: 'input[name="hdrInput"]',
@@ -16,7 +16,7 @@ module.exports = {
         lis: 'input[name="lisInput"]',
     },
 
-        
+
     //'Warrant ID' field selector for 'Modify Wanted' and 'Cancel Wanted'
     war: 'input[name="widInput"]',
 
@@ -51,10 +51,10 @@ module.exports = {
 
         //these selectors will let you select the corresponding option from the race dropdown menu:
         raceAsian: 'select[name = "racInput"] option[value="A"]',
-        raceBlack:'select[name = "racInput"] option[value="B"]',
-        raceHispanic:'select[name = "racInput"] option[value="H"]',
-        raceIndian:'select[name = "racInput"] option[value="I"]',
-        raceWhite:'select[name = "racInput"] option[value="W"]',
+        raceBlack: 'select[name = "racInput"] option[value="B"]',
+        raceHispanic: 'select[name = "racInput"] option[value="H"]',
+        raceIndian: 'select[name = "racInput"] option[value="I"]',
+        raceWhite: 'select[name = "racInput"] option[value="W"]',
         raceUnknown: 'select[name = "racInput"] option[value="U"]'
     },
 
@@ -76,6 +76,6 @@ module.exports = {
         assembledQuery: 'span[name="queryBody"]',
         expectedError: 'ul[name="errorList"]',
         errorList: 'ul[id="errorList"]',
-        
+
     }
 }
