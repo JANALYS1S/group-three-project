@@ -517,8 +517,45 @@ module.exports = {
                 old: '01012020',
                 lid: '09012018'
             }
-        },
+        }
+    },
 
+    optionalFieldsEW: {
+        input: {
+            fields: {
+                hdr: 'abc123!@#',
+                mke: '#Ab',
+                oai: '12345abcd',
+                nam: 'John Smith 2!',
+                hgt: '601',
+                wgt: '200',
+                hai: 'Brown',
+                off: 'Jaywalking <3',
+            },
+            dropdowns: {
+                sex: 'M',
+                rac: 'W'
+            },
+            dates: {
+                dow: '01012018'
+            }
+        },
+        optionalTrioOne: {
+            old: '01012020',
+            oln: '123abc@%',
+            ols: 'UT',
+            messages: [
+                `If one of the following are present, all must be present: Drivers License, DL State, DL Expiration Date.`
+            ]
+        },
+        optionalTrioTwo: {
+            lid: '09012018',
+            lic: '123ABC',
+            lis: 'OK',
+            messages: [
+                `If one of the following are present, all must be present: License Plate, License State, License Expiration Date.`
+            ]
+        }
 
     },
 
