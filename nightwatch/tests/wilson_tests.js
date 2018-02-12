@@ -5,29 +5,20 @@ const data = require('../support/data')
 module.exports = {
     beforeEach: browser => {
         browser.url('http://localhost:3000');
-
-        //waits for menu to load.  Raises error if it takes more than 10 seconds
-        browser.waitForElementVisible(selectors.buttons.menuButton, 10000)
-
     },
 
+    /*
     after: browser => {
         browser.end()
     },
+    */
 
     'Enter Wanted: Just Long Enough': browser => {
         //Checks if inputs are accepted at its minimum allowed length.
         //Does not check for calendar inputs or the assembled query.
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
-        browser.click(selectors.buttons.enterW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Enter Wanted' form
+        functions.loadChosenWanted(selectors.buttons.enterW, browser)
 
         //enters input fields
         functions.enterFields(selectors.fields, data.justLongEnough.input, browser)
@@ -53,20 +44,13 @@ module.exports = {
         //Checks if inputs are accepted at its minimum allowed length.
         //Does not check for calendar inputs or the assembled query.
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Modify Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
-        browser.click(selectors.buttons.modifyW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Modify Wanted' form
+        functions.loadChosenWanted(selectors.buttons.modifyW, browser)
 
         //sets warrant id field
         functions.enterValue(selectors.war, data.justLongEnough.input.war, browser)
 
-        //enters input fields
+        //enters remaining input fields
         functions.enterFields(selectors.fields, data.justLongEnough.input, browser)
 
         //enters dropdown fields
@@ -90,15 +74,8 @@ module.exports = {
         //Checks if inputs are accepted at its minimum allowed length.
         //Does not check for calendar inputs or the assembled query.
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
-        browser.click(selectors.buttons.cancelW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Cancel Wanted' form
+        functions.loadChosenWanted(selectors.buttons.cancelW, browser)
 
         //enter input fields
         functions.enterValue(selectors.war, data.justLongEnough.input.war, browser)
@@ -120,15 +97,8 @@ module.exports = {
         //Checks if inputs are accepted at its maximum allowed length.
         //Does not check for calendar inputs or the assembled query.
 
-        //waits for the menu button to appear, and then clicks on it
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
-        browser.click(selectors.buttons.enterW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Enter Wanted' form
+        functions.loadChosenWanted(selectors.buttons.enterW, browser)
 
         //enters input fields
         functions.enterFields(selectors.fields, data.almostTooLong.input, browser)
@@ -154,15 +124,8 @@ module.exports = {
         //Checks if inputs are accepted at its maximum allowed length.
         //Does not check for calendar inputs or the assembled query.
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Modify Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
-        browser.click(selectors.buttons.modifyW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Modify Wanted' form
+        functions.loadChosenWanted(selectors.buttons.modifyW, browser)
 
         //enters warrant id field
         functions.enterValue(selectors.war, data.almostTooLong.input.war, browser)
@@ -191,15 +154,8 @@ module.exports = {
         //Checks if inputs are accepted at its maximum allowed length.
         //Does not check for calendar inputs or the assembled query.
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
-        browser.click(selectors.buttons.cancelW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Cancel Wanted' form
+        functions.loadChosenWanted(selectors.buttons.cancelW, browser)
 
         //enter values
         functions.enterValue(selectors.war, data.almostTooLong.input.war, browser)
@@ -221,15 +177,8 @@ module.exports = {
         //Verifies error messages for inputs submitted one character below its minimum accepted length
         //Does not check for calendar inputs
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
-        browser.click(selectors.buttons.enterW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Enter Wanted' form
+        functions.loadChosenWanted(selectors.buttons.enterW, browser)
 
         //enters input fields
         functions.enterFields(selectors.fields, data.tooShort.input, browser)
@@ -253,15 +202,8 @@ module.exports = {
         //Verifies error messages for inputs submitted one character below its minimum accepted length
         //Does not check for calendar inputs
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
-        browser.click(selectors.buttons.modifyW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Modify Wanted' form
+        functions.loadChosenWanted(selectors.buttons.modifyW, browser)
 
         //sets 'warrantID' field
         browser.setValue(selectors.war, data.tooShort.input.war)
@@ -289,15 +231,8 @@ module.exports = {
         //Verifies error messages for inputs submitted one character below its minimum accepted length
         //Does not check for calendar inputs
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
-        browser.click(selectors.buttons.cancelW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Cancel Wanted' form
+        functions.loadChosenWanted(selectors.buttons.cancelW, browser)
 
         //enter values
         functions.enterValue(selectors.war, data.tooShort.input.war, browser)
@@ -315,15 +250,8 @@ module.exports = {
         //Verifies error messages for inputs submitted one character above its maximum accepted length
         //Does not check for calendar inputs
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
-        browser.click(selectors.buttons.enterW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Enter Wanted' form
+        functions.loadChosenWanted(selectors.buttons.enterW, browser)
 
         //enters input fields
         functions.enterFields(selectors.fields, data.tooLong.input, browser)
@@ -349,15 +277,8 @@ module.exports = {
         //Verifies error messages for inputs submitted one character above its maximum accepted length
         //Does not check for calendar inputs
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
-        browser.click(selectors.buttons.modifyW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Modify Wanted' form
+        functions.loadChosenWanted(selectors.buttons.modifyW, browser)
 
         //sets 'warrantID' field
         functions.enterValue(selectors.war, data.tooLong.input.war, browser)
@@ -387,15 +308,8 @@ module.exports = {
         //Verifies error messages for inputs submitted one character above its maximum accepted length
         //Does not check for calendar inputs
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Cancel Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
-        browser.click(selectors.buttons.cancelW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Cancel Wanted' form
+        functions.loadChosenWanted(selectors.buttons.cancelW, browser)
 
         //enters input fields
         functions.enterValue(selectors.war, data.tooLong.input.war, browser)
@@ -415,15 +329,8 @@ module.exports = {
     "Enter Wanted: Tests for '.'": browser => {
         //Verifies error messages for inputs submitted with a '.'
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
-        browser.click(selectors.buttons.modifyW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Enter Wanted' form
+        functions.loadChosenWanted(selectors.buttons.enterW, browser)
 
         //enters input fields
         functions.enterFields(selectors.fields, data.invalidPeriods.input, browser)
@@ -452,15 +359,8 @@ module.exports = {
     "Modify Wanted: Tests for '.'": browser => {
         //Verifies error messages for inputs submitted with a '.'
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
-        browser.click(selectors.buttons.modifyW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Modify Wanted' form
+        functions.loadChosenWanted(selectors.buttons.modifyW, browser)
 
         //sets 'warrantID' field
         browser.setValue(selectors.war, data.invalidPeriods.input.war)
@@ -488,26 +388,13 @@ module.exports = {
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['ols'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['lic'])
         browser.verify.containsText(selectors.messages.errorList, data.invalidPeriods.output.errorList['lis'])
-
-        //checks queryTitle
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.invalidPeriods.output.queryTitle)
-
-        //checks the assembledQuery
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.invalidPeriods.output.assembledQuery)
     },
 
     "Cancel Wanted: Tests for '.'": browser => {
         //Verifies error messages for inputs submitted with a '.'
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Cancel Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
-        browser.click(selectors.buttons.cancelW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Cancel Wanted' form
+        functions.loadChosenWanted(selectors.buttons.cancelW, browser)
 
         //enters input fields
         functions.enterValue(selectors.war, data.invalidPeriods.input.war, browser)
@@ -526,15 +413,8 @@ module.exports = {
         //Inputs alphabetical characters in each field and verifies error messages for the fields that do not accept alphabetical characters.
         //Verifies inputs are accepted for fields that accept alphabetical characters
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
-        browser.click(selectors.buttons.enterW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Enter Wanted' form
+        functions.loadChosenWanted(selectors.buttons.enterW, browser)
 
         //enters input fields
         functions.enterFields(selectors.fields, data.alphabeticalCharacters.input, browser)
@@ -556,15 +436,8 @@ module.exports = {
         //Inputs alphabetical characters in each field and verifies error messages for the fields that do not accept alphabetical characters.
         //Verifies inputs are accepted for fields that accept alphabetical characters
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
-        browser.click(selectors.buttons.modifyW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Modify Wanted' form
+        functions.loadChosenWanted(selectors.buttons.modifyW, browser)
 
         //sets 'warrantID' field
         browser.setValue(selectors.war, data.alphabeticalCharacters.input.war)
@@ -591,15 +464,8 @@ module.exports = {
         //Inputs alphabetical characters in each field and verifies error messages for the fields that do not accept alphabetical characters.
         //Verifies inputs are accepted for fields that accept alphabetical characters
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Cancel Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
-        browser.click(selectors.buttons.cancelW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Cancel Wanted' form
+        functions.loadChosenWanted(selectors.buttons.cancelW, browser)
 
         //enters input fields
         functions.enterValue(selectors.war, data.alphabeticalCharacters.input.war, browser)
@@ -619,15 +485,8 @@ module.exports = {
         //Inputs special characters in each field and verifies error messages for the fields that do not accept special characters.
         //Verifies inputs are accepted for fields that accept special characters
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
-        browser.click(selectors.buttons.enterW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Enter Wanted' form
+        functions.loadChosenWanted(selectors.buttons.enterW, browser)
 
         //enters input fields
         functions.enterFields(selectors.fields, data.specialCharacters.input, browser)
@@ -655,15 +514,8 @@ module.exports = {
         //Inputs special characters in each field and verifies error messages for the fields that do not accept special characters.
         //Verifies inputs are accepted for fields that accept special characters
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
-        browser.click(selectors.buttons.modifyW)
-
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Modify Wanted' form
+        functions.loadChosenWanted(selectors.buttons.modifyW, browser)
 
         //sets 'warrantID' field
         browser.setValue(selectors.war, data.specialCharacters.input.war)
@@ -694,15 +546,8 @@ module.exports = {
         //Inputs special characters in each field and verifies error messages for the fields that do not accept special characters.
         //Verifies inputs are accepted for fields that accept special characters
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Cancel Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
-        browser.click(selectors.buttons.cancelW)
-
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Modify Wanted' form
+        functions.loadChosenWanted(selectors.buttons.cancelW, browser)
 
         //enters input fields
         functions.enterValue(selectors.war, data.specialCharacters.input.war, browser)
@@ -722,15 +567,8 @@ module.exports = {
         //Inputs numeric characters in each field and verifies error messages for the fields that do not accept numeric characters.
         //Verifies inputs are accepted for fields that accept numeric characters
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.enterW, 10000)
-        browser.click(selectors.buttons.enterW)
-
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Modify Wanted' form
+        functions.loadChosenWanted(selectors.buttons.enterW, browser)
 
         //enters input fields
         functions.enterFields(selectors.fields, data.numericalCharacters.input, browser)
@@ -750,27 +588,14 @@ module.exports = {
 
         browser.verify.containsText(selectors.messages.errorList, data.numericalCharacters.output.errorList['ols'])
         browser.verify.containsText(selectors.messages.errorList, data.numericalCharacters.output.errorList['lis'])
-
-        //checks queryTitle
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.numericalCharacters.output.queryTitle)
-
-        //checks the assembledQuery
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.numericalCharacters.output.assembledQuery)
     },
 
     'Modify Wanted: Numerical Characters Test': browser => {
         //Inputs numeric characters in each field and verifies error messages for the fields that do not accept numeric characters.
         //Verifies inputs are accepted for fields that accept numeric characters
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Enter Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.modifyW, 10000)
-        browser.click(selectors.buttons.modifyW)
-        
-        //prevents browser crashing due to rapid opening and closing of browser
-        browser.pause(3000)
+        //loads the 'Modify Wanted' form
+        functions.loadChosenWanted(selectors.buttons.modifyW, browser)
 
         //sets 'warrantID' field
         browser.setValue(selectors.war, data.numericalCharacters.input.war)
@@ -793,24 +618,14 @@ module.exports = {
 
         browser.verify.containsText(selectors.messages.errorList, data.numericalCharacters.output.errorList['ols'])
         browser.verify.containsText(selectors.messages.errorList, data.numericalCharacters.output.errorList['lis'])
-
-        //checks queryTitle
-        browser.expect.element(selectors.messages.queryTitle).text.to.equal(data.numericalCharacters.output.queryTitle)
-
-        //checks the assembledQuery
-        browser.expect.element(selectors.messages.assembledQuery).text.to.equal(data.numericalCharacters.output.assembledQuery)
     },
 
     'Cancel Wanted: Numerical Characters Test': browser => {
         //Inputs numeric characters in each field and verifies error messages for the fields that do not accept numeric characters.
         //Verifies inputs are accepted for fields that accept numeric characters
 
-        //waits for the menu button to appear, and then clicks on it.  Raises an error if it takes more than 10 seconds for the menu to appear.
-        browser.click(selectors.buttons.menuButton)
-
-        //waits for the menu options to appear, and then clicks 'Cancel Wanted'.  Raises an error if it takes more than 10 seconds for the option to appear.
-        browser.waitForElementVisible(selectors.buttons.cancelW, 10000)
-        browser.click(selectors.buttons.cancelW)
+        //loads the 'Cancel Wanted' form
+        functions.loadChosenWanted(selectors.buttons.cancelW, browser)
 
         //enters input fields
         functions.enterValue(selectors.war, data.numericalCharacters.input.war, browser)

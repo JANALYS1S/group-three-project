@@ -60,12 +60,6 @@ module.exports = {
 
 
 
-
-
-
-
-
-
     //  the next three tests are testing how many numbers a user can input into the calender fields
     'Breaking Year Fields Enter Wanted': browser => { //should fail in second version 
         browser
