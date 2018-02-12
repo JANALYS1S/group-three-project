@@ -96,5 +96,11 @@ module.exports = {
     modifyWanted: {
         warrantID: '1234567890',
         dCError: 'The "Date of Cancellation" field should be 10 characters long.',
-    }
+    },
+    numberOfDaysInMonth: {
+        dateWarViol: '02312018',
+        dLExpirationDate: '02312018',
+        licenseExpirationDate: '02312018',
+        dateofCancellation: '02312018',
+    },
 }

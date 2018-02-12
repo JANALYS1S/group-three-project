@@ -34,7 +34,7 @@ module.exports = {
             .click(selectors.buttons.menuButton)
             .waitForElementVisible(selectors.buttons.modifyW, 3000)
             .click(selectors.buttons.modifyW)
-            .setValue(selectors.fields.war, data.modifyWanted.warrantID)
+            .setValue(selectors.war, data.modifyWanted.warrantID)
             .click(selectors.calendars.dow)
             .setValue(selectors.calendars.dow, data.goodData.input2.dow)
             .setValue(selectors.calendars.lid, data.goodData.input2.lid)
@@ -50,7 +50,7 @@ module.exports = {
             .pause(5000)
             .click(selectors.buttons.cancelW)
             .pause(3000)
-            .setValue(selectors.fields.war, data.modifyWanted.warrantID)
+            .setValue(selectors.war, data.modifyWanted.warrantID)
             .click(selectors.fields.rfC)
             .setValue(selectors.fields.rfC, data.goodData.input2.nam)
             .click(selectors.calendars.dateoC)
@@ -91,9 +91,9 @@ module.exports = {
             .click(selectors.buttons.menuButton)
             .waitForElementVisible(selectors.buttons.modifyW, 3000)
             .click(selectors.buttons.modifyW)
-            .waitForElementVisible(selectors.fields.war, 3000)
-            .click(selectors.fields.war)
-            .setValue(selectors.fields.war, data.goodData.input2)
+            .waitForElementVisible(selectors.war, 3000)
+            .click(selectors.war)
+            .setValue(selectors.war, data.goodData.input2)
             .click(selectors.calendars.dow)
             .setValue(selectors.calendars.dow, data.breakingYear.dOW)
             .waitForElementVisible(selectors.calendars.lid, 3000)
@@ -124,8 +124,56 @@ module.exports = {
         browser.verify.containsText(selectors.messages.errorList, data.cancelWanted.dOCError)
 
 
-    },
 
+   },
+    'Number of days in a month': browser =>{
+        browser
+        //starting with enter wanted 
+        .waitForElementVisible(selectors.buttons.menuButton, 10000)
+        .click(selectors.buttons.menuButton)
+        .waitForElementVisible(selectors.buttons.enterW, 1000)
+        .click(selectors.buttons.enterW)
+        .waitForElementVisible(selectors.buttons.clear, 10000)
+        .click(selectors.fields.hdr)
+        .setValue(selectors.fields.hdr, data.goodData.input)
+        .click(selectors.calendars.dow)
+        .setValue(selectors.calendars.dow, data.numberOfDaysInMonth.dateWarViol)
+        .click(selectors.calendars.old)
+        .setValue(selectors.calendars.old, data.numberOfDaysInMonth.dLExpirationDate)
+        .click(selectors.calendars.lid)
+        .setValue(selectors.calendars.lid, data.numberOfDaysInMonth.licenseExpirationDate)
+        .click(selectors.buttons.submit)
+        .expect.element(selectors.messages.queryTitle).to.be.visible
+        browser
+        //testing modify wanted
+        .click(selectors.buttons.menuButton)
+        .waitForElementVisible(selectors.buttons.modifyW, 10000)
+        .click(selectors.buttons.modifyW)
+        .waitForElementVisible(selectors.war, 10000) 
+        .setValue(selectors.war, data.goodData.input)
+        .click(selectors.calendars.dow)
+        .setValue(selectors.calendars.dow, data.numberOfDaysInMonth.dateWarViol)
+        .click(selectors.calendars.old)
+        .setValue(selectors.calendars.old, data.numberOfDaysInMonth.dLExpirationDate)
+        .click(selectors.calendars.lid)
+        .setValue(selectors.calendars.lid, data.numberOfDaysInMonth.licenseExpirationDate)
+        .click(selectors.buttons.submit)
+        .expect.element(selectors.messages.queryTitle).to.be.visible
+        browser
+        //testing cancel wanted
+        .click(selectors.buttons.menuButton)
+        .waitForElementVisible(selectors.buttons.modifyW, 10000)
+        .click(selectors.buttons.cancelW)
+        .waitForElementVisible(selectors.calendars.dateoC, 1000)
+        .click(selectors.war)
+        .setValue(selectors.war, data.goodData.input)
+        .click(selectors.calendars.dateoC)
+        .setValue(selectors.calendars.dateoC, data.numberOfDaysInMonth.dateofCancellation)
+        .click(selectors.buttons.submit)
+        .expect.element(selectors.messages.queryTitle).to.be.visible
+       
+    
+    },
 
 
 
